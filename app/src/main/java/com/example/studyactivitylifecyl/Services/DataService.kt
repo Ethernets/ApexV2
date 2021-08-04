@@ -2,15 +2,20 @@ package com.example.studyactivitylifecyl.Services
 
 import com.example.studyactivitylifecyl.Model.HeroesList
 import com.example.studyactivitylifecyl.Model.PlayerInfo
+import com.example.studyactivitylifecyl.Model.TestHero
+import com.google.gson.annotations.SerializedName
 
 object DataService {
-    val heroesList = listOf(
-        HeroesList("Wraith", 1200, "png_main"),
-        HeroesList("Octane", 500, "png_main"),
-        HeroesList("Lifeline", 760, "png_img")
-    )
-    val playerList = listOf(
-        PlayerInfo("Ethernetss","pc"),
-        PlayerInfo("Ethernetts", "pc")
-    )
+
+    data class TestikHero (@SerializedName("realtime") val  realtime: timeR,
+                         @SerializedName("global") val global: Herio)
+
+    data class  Herio (val name: String, val uid: Long, val avatar: String, val platform: String,
+                       val  level: Int, val toNextLevelPercent: Int, val internalUpdateCount: Int)
+
+    data class timeR (val lobbyState: String, val isOnline: Int, val isInGame: Int, val canJoin: Int,
+                      val partyFull: Int, val selectedLegend: String)
+
+    val lisik = listOf<Herio>()
+
 }
