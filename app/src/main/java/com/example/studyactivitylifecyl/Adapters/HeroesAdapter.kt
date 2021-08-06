@@ -29,14 +29,13 @@ class HeroesAdapter(context: Context, heroes: List<TestHero>): BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
            // categoryView = LayoutInflater.from(context).inflate(R.layout.activity_heroes, null)
-        val categoryView = LayoutInflater.from(context).inflate(R.layout.list_hero_view, parent, false)
+        val listheroView = LayoutInflater.from(context).inflate(R.layout.list_hero_view, parent, false)
            // val categoryImage: ImageView = categoryView.findViewById(R.id.heroesImageView)
-            val categoryText: TextView = categoryView.findViewById(R.id.textHeroView)
+            val heroText: TextView = listheroView.findViewById(R.id.textHeroView)
             val category = heroes[position]
 
-            categoryText.text = category.global.name
-
-            return categoryView
+            heroText.text = category.legends.all.toString()
+            return listheroView
 
     }
 }

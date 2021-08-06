@@ -1,13 +1,16 @@
 package com.example.studyactivitylifecyl
 
 import android.content.Context
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.example.studyactivitylifecyl.Adapters.HeroesAdapter
+import com.example.studyactivitylifecyl.Adapters.PlayerInfAdapter
 import com.example.studyactivitylifecyl.Model.TestHero
+import com.example.studyactivitylifecyl.Services.DataService
 import kotlinx.android.synthetic.main.activity_heroes.*
 import kotlinx.android.synthetic.main.list_hero_view.*
 import kotlinx.coroutines.Dispatchers
@@ -24,9 +27,9 @@ const val BASE_URL = "https://api.mozambiquehe.re"
 
 class HeroesActivity : AppCompatActivity() {
 
-    lateinit var adapter : ArrayAdapter<TestHero>
-    lateinit var adapt: ArrayAdapter<String>
     lateinit var heroesAdapt : HeroesAdapter
+    lateinit var playerIfnAdapt : PlayerInfAdapter
+
     val listHero = ArrayList<TestHero>()
     private val TAG = "HeroesActivity"
 
@@ -39,12 +42,12 @@ class HeroesActivity : AppCompatActivity() {
        // val adapterr = ArrayAdapter(this, android.R.layout.simple_list_item_1,)
 
 
-        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,
-            LinkedList<TestHero>())
+     //   adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,
+     //       LinkedList<TestHero>())
        // heroesListView.adapter = adapter
 
-        adapt = ArrayAdapter(this, android.R.layout.simple_list_item_1,
-            LinkedList<String>())
+     //   adapt = ArrayAdapter(this, android.R.layout.simple_list_item_1,
+       //     LinkedList<String>())
         //heroesListView.adapter = adapt
 
 
@@ -52,6 +55,8 @@ class HeroesActivity : AppCompatActivity() {
 
         heroesAdapt = HeroesAdapter(this, listHero)
         heroesListView.adapter = heroesAdapt
+
+
 
 
     }
@@ -71,10 +76,17 @@ class HeroesActivity : AppCompatActivity() {
 
                 withContext(Dispatchers.Main){
                    // adapter.add(data.global.name)
-                    adapt.add(data.global.platform)
+                   // adapt.add(data.global.platform)
 
                     listHero.add(data)
                     heroesAdapt.notifyDataSetChanged()
+                    textNickname.text = "${data.global.name} (${data.global.rank.rankDiv} дивизион)"
+                    textLvl.text = "Уровень: ${data.global.level.toString()}"
+                    when(data.global.rank.rankName){
+                        "Silver" -> textNickname.setTextColor(Color.parseColor("#7A7A79"))
+                        "Gold" ->   textNickname.setTextColor(Color.parseColor("#E6D600"))
+                    }
+
                 }
 
             }

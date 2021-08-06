@@ -10,10 +10,12 @@
         android:id="@+id/heroesImageView"
         android:layout_width="426dp"
         android:layout_height="180dp"
+        android:layout_marginTop="24dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@mipmap/wraith_apex_legends" />
 
     <TextView
@@ -30,5 +32,7 @@
         app:layout_constraintStart_toStartOf="@+id/heroesImageView"
         app:layout_constraintTop_toTopOf="@+id/heroesImageView"
         app:layout_constraintVertical_bias="0.04000002" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
