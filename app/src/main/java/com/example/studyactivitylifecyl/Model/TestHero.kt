@@ -19,10 +19,13 @@ data class BanInf (val isActive: Boolean, val remainingSeconds: Int)
 data class RankInf (val rankScore: Int, val rankName: String, val rankDiv: Int, val rankImg: String)
 
 
-data class AllLegends (@SerializedName("all") val all : Revenant, @SerializedName("all") val all2: Horizon)
+data class AllLegends (@SerializedName("all") val all: Map<String, LegendWrapper> = emptyMap())
 
-data class Revenant (val ImgAssets: String)
-data class Horizon (val data : ArrayList<Rang>, val ImgAssets: String)
 
-data class Rang (val t0 : Rang0)
-data class Rang0 (val name: String, val value: Int, val key: String)
+data class LegendWrapper(
+    val data: List<PlayerPerformance>? = emptyList()
+
+)
+data class PlayerPerformance(val name: String, val value: Int, val key: String)
+
+data class TestList (val name: ArrayList<String>)
