@@ -1,12 +1,9 @@
 package com.example.studyactivitylifecyl.Model
 
-import android.net.Uri
-import com.google.gson.Gson
-import com.google.gson.annotations.Expose
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import java.net.URI
-import java.util.*
-import kotlin.collections.ArrayList
+import kotlinx.parcelize.Parcelize
+
 
 data class TestHero (@SerializedName("global") val global: PlayerInf,
                      @SerializedName("legends")val legends: AllLegends)
@@ -22,10 +19,14 @@ data class RankInf (val rankScore: Int, val rankName: String, val rankDiv: Int, 
 data class AllLegends (@SerializedName("all") val all: Map<String, LegendWrapper> = emptyMap())
 
 
-data class LegendWrapper(
-    val data: List<PlayerPerformance>? = emptyList()
+@Parcelize
+data class LegendWrapper(val data: List<PlayerPerformance>? = emptyList(), val ImgAssets: ImgAssets): Parcelable
 
-)
-data class PlayerPerformance(val name: String, val value: Int, val key: String)
+@Parcelize
+data class PlayerPerformance(val name: String, val value: Int, val key: String): Parcelable
 
-data class TestList (val name: ArrayList<String>)
+@Parcelize
+data class TestList(val name: String, val data: LegendWrapper): Parcelable
+
+@Parcelize
+data class ImgAssets (val icon: String, val banner: String): Parcelable

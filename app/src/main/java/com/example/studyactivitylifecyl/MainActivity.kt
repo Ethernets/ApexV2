@@ -3,9 +3,8 @@ package com.example.studyactivitylifecyl
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
-import kotlinx.android.synthetic.main.activity_main.*
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+         val getStartedBtn = findViewById<Button>(R.id.getStartedBtn)
+         val editTextTextMultiLine = findViewById<EditText>(R.id.editTextTextMultiLine)
 
 
         getStartedBtn.setOnClickListener{
