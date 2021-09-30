@@ -77,7 +77,7 @@ class HeroesActivity : AppCompatActivity() {
 
                         for((key, value ) in data.legends.all){
                             recList.add(TestList(key, value))
-                            println(value)
+                            //println(value)
                         }
                       //  Log.d("HeroesActivity", recList.toString())
                         notifyDataSetChanged()
