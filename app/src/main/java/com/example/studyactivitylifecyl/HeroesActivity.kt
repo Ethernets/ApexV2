@@ -69,7 +69,7 @@ class HeroesActivity : AppCompatActivity() {
             val response = api.getList(nicknamePlayer.toString()).awaitResponse()
             if (response.isSuccessful) {
                 val data = response.body()!!
-                Log.d(TAG, data.toString())
+               // Log.d(TAG, data.toString())
 
                 withContext(Dispatchers.Main){
 

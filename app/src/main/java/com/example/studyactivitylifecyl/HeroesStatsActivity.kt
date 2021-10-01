@@ -64,9 +64,45 @@ class HeroesStatsActivity : AppCompatActivity() {
         textViewBigNameKills4.visibility = View.INVISIBLE
         textViewBigNameKills5.visibility = View.INVISIBLE
         textViewBigNameKills6.visibility = View.INVISIBLE
+        //println(test?.data?.size.toString())
 
           if (test?.data != null) {
-              if (test.data.size <= 3 ){
+              if (test.data.size < 3 ){
+                  imageKills.visibility = View.INVISIBLE
+                  imageWins.visibility = View.VISIBLE
+                  imageDamages.visibility = View.INVISIBLE
+
+                  imageAllStats6.visibility = View.INVISIBLE
+                  textViewBigValueKills.visibility = View.INVISIBLE
+                  textViewBigValueKills2.visibility = View.INVISIBLE
+                  textViewBigValueKills3.visibility = View.INVISIBLE
+                  textViewBigValueKills4.visibility = View.INVISIBLE
+                  textViewBigValueKills5.visibility = View.INVISIBLE
+                  textViewBigValueKills6.visibility = View.INVISIBLE
+                  textViewBigNameKills.visibility = View.INVISIBLE
+                  textViewBigNameKills2.visibility = View.INVISIBLE
+                  textViewBigNameKills3.visibility = View.INVISIBLE
+                  textViewBigNameKills4.visibility = View.INVISIBLE
+                  textViewBigNameKills5.visibility = View.INVISIBLE
+                  textViewBigNameKills6.visibility = View.INVISIBLE
+
+                  textNameValueKills.visibility = View.INVISIBLE
+                  textValueKills.visibility = View.INVISIBLE
+                  textNameValueWins.visibility = View.VISIBLE
+                  textValueWins.visibility = View.VISIBLE
+                  textNameValueDamage.visibility = View.INVISIBLE
+                  textValueDamage.visibility = View.INVISIBLE
+
+                  //textNameValueKills.layout                      //layout_constraintBottom_toTopOf
+
+                  //textNameValueKills.text = test.data[0].name
+                  //textValueKills.text = test.data[0].value.toString()
+                  textNameValueWins.text = test.data[0].name
+                  textValueWins.text = test.data[0].value.toString()
+                 // textNameValueDamage.text = test.data[2].name
+                 // textValueDamage.text = test.data[2].value.toString()
+
+              }else if (test.data.size <= 5){
                   imageKills.visibility = View.VISIBLE
                   imageWins.visibility = View.VISIBLE
                   imageDamages.visibility = View.VISIBLE
