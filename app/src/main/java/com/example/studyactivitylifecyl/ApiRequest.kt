@@ -1,12 +1,9 @@
 package com.example.studyactivitylifecyl
 
 
-import com.example.studyactivitylifecyl.Model.TestHero
-import com.example.studyactivitylifecyl.MainActivity
-import com.example.studyactivitylifecyl.Services.DataService
+import com.example.studyactivitylifecyl.model.TestHero
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiRequest {

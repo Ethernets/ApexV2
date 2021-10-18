@@ -1,16 +1,17 @@
-package com.example.studyactivitylifecyl
+package com.example.studyactivitylifecyl.view.activities
 
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.studyactivitylifecyl.Adapters.HeroesRecyclerAdapter
-import com.example.studyactivitylifecyl.Model.TestList
+import com.example.studyactivitylifecyl.ApiRequest
+import com.example.studyactivitylifecyl.R
+import com.example.studyactivitylifecyl.adapters.HeroesRecyclerAdapter
+import com.example.studyactivitylifecyl.model.TestList
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -39,7 +40,7 @@ class HeroesActivity : AppCompatActivity() {
         getCurrentData()
 
         heroesAdapt = HeroesRecyclerAdapter(this, recList){
-            testList -> val heroesStatsActivity = Intent(this,HeroesStatsActivity::class.java)
+            testList -> val heroesStatsActivity = Intent(this, HeroesStatsActivity::class.java)
 
             heroesStatsActivity.putExtra("nicknameHeroes", testList.name)
             heroesStatsActivity.putExtra("data", testList.data)

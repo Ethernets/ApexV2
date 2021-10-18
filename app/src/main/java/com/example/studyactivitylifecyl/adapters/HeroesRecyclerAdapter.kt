@@ -1,15 +1,13 @@
-package com.example.studyactivitylifecyl.Adapters
+package com.example.studyactivitylifecyl.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.studyactivitylifecyl.Model.PlayerPerformance
-import com.example.studyactivitylifecyl.Model.TestList
+import com.example.studyactivitylifecyl.model.TestList
 import com.example.studyactivitylifecyl.R
 import com.squareup.picasso.Picasso
 

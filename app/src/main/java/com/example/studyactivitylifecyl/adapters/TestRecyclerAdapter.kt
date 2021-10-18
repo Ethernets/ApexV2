@@ -1,4 +1,4 @@
-package com.example.studyactivitylifecyl.Adapters
+package com.example.studyactivitylifecyl.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.studyactivitylifecyl.Model.AllLegends
-import com.example.studyactivitylifecyl.Model.LegendWrapper
+import com.example.studyactivitylifecyl.model.AllLegends
 import com.example.studyactivitylifecyl.R
 
 class TestRecyclerAdapter(val cont: Context): RecyclerView.Adapter<TestRecyclerAdapter.Holders>() {

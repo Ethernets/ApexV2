@@ -1,4 +1,4 @@
-package com.example.studyactivitylifecyl.Model
+package com.example.studyactivitylifecyl.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

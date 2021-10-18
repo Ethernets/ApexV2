@@ -4,9 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,10 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyActivityLifeCyl">
         <activity
-            android:name=".HeroesStatsActivity"
+            android:name=".view.activities.SplashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main" />
+        <activity
+            android:name=".view.activities.HeroesStatsActivity"
             android:exported="true" />
-        <activity android:name=".HeroesActivity"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.activities.HeroesActivity" />
+        <activity android:name=".view.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

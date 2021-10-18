@@ -3,19 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18697916666666667" />
-        <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/drawable/swoosh_buttom.xml" value="0.18697916666666667" />
-        <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/layout-land/activity_heroes_stats.xml" value="0.4" />
-        <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/layout-small/activity_heroes_stats.xml" value="0.25" />
-        <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/layout-sw600dp/activity_heroes_stats.xml" value="0.240625" />
         <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/layout/activity_heroes.xml" value="0.8" />
-        <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/layout/activity_heroes_stats.xml" value="0.23820224719101124" />
         <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/layout/list_hero_view.xml" value="0.8" />
-        <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.18697916666666667" />
-        <entry key="..\:/Kotlin proj/app/src/main/res/layout/activity_heroes.xml" value="0.34646739130434784" />
-        <entry key="..\:/Kotlin proj/app/src/main/res/layout/activity_heroes_stats.xml" value="0.33061594202898553" />
-        <entry key="..\:/Kotlin proj/app/src/main/res/layout/activity_main.xml" value="0.20572916666666666" />
-        <entry key="..\:/Kotlin proj/app/src/main/res/layout/list_hero_view.xml" value="0.246875" />
+        <entry key="..\:/Kotlin proj/ApexV2/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
       </map>
     </option>
   </component>
