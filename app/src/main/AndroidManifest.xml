@@ -11,7 +11,9 @@
         android:theme="@style/Theme.ApexTracker">
         <activity
             android:name=".view.activities.ProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ApexTracker.NoActionBar"
+            android:configChanges="orientation"/>
         <activity
             android:name=".view.activities.SplashActivity"
             android:theme="@style/Theme.ApexTracker.NoActionBar">
