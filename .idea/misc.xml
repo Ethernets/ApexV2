@@ -10,6 +10,10 @@
         <entry key="..\:/Android_apps/ApexTrackerV2/app/src/main/res/layout/login_layout.xml" value="0.2" />
         <entry key="..\:/Android_apps/ApexTrackerV2/app/src/main/res/menu/menu_profile.xml" value="0.1828125" />
         <entry key="..\:/Android_apps/ApexTrackerV2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.203125" />
+        <entry key="..\:/Kotlin proj/ApexV2/app/src/main/res/layout/activity_main.xml" value="0.2015625" />
+        <entry key="..\:/Kotlin proj/ApexV2/app/src/main/res/layout/activity_profile.xml" value="0.2015625" />
+        <entry key="..\:/Kotlin proj/ApexV2/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Kotlin proj/ApexV2/app/src/main/res/layout/item_heroes_layout.xml" value="0.2015625" />
       </map>
     </option>
   </component>
