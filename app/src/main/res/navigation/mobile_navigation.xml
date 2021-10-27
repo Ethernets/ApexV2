@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.apextracker.view.fragments.HomeFragment"
+        android:name="com.example.apextracker.view.fragments.HeroesFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 

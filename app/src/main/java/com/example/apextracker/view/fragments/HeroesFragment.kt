@@ -3,21 +3,21 @@ package com.example.apextracker.view.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.apextracker.R
-import com.example.apextracker.databinding.ActivityMainBinding
 import com.example.apextracker.databinding.FragmentHomeBinding
 import com.example.apextracker.view.activities.ProfileActivity
 import com.example.apextracker.view.adapters.HeroesAdapter
-import com.example.apextracker.viewmodel.HomeViewModel
+import com.example.apextracker.viewmodel.HeroesViewModel
 
-class HomeFragment : Fragment() {
+class HeroesFragment : Fragment() {
 
     private lateinit var mBinding: FragmentHomeBinding
+
+    private lateinit var mAllInfoApex: HeroesViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -35,10 +35,16 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mAllInfoApex = ViewModelProvider(this).get(HeroesViewModel::class.java)
+        mAllInfoApex.getAllInfoApexFromAPI()
+
         mBinding.rvHeroList.layoutManager = GridLayoutManager(requireActivity(), 2)
-        val heroesAdapter = HeroesAdapter(this@HomeFragment)
+        val heroesAdapter = HeroesAdapter(this@HeroesFragment)
 
         mBinding.rvHeroList.adapter = heroesAdapter
+
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
