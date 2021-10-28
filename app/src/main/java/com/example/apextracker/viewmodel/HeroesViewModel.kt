@@ -18,7 +18,7 @@ class HeroesViewModel: ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
-    private val loadAllInfoApex = MutableLiveData<Boolean>()
+    val loadAllInfoApex = MutableLiveData<Boolean>()
     val allInfoApexResponse = MutableLiveData<AllHeroes.Heroes>()
     val allInfoApexLoadingError = MutableLiveData<Boolean>()
 
