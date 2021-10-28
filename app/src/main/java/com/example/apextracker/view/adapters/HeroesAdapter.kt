@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apextracker.databinding.ItemHeroesLayoutBinding
+import com.example.apextracker.model.entities.AllHeroes
 import com.example.apextracker.model.entities.Heroes
 
 class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<HeroesAdapter.ViewHolder>() {
 
     private var heroes: List<Heroes> = listOf()
+    private var heroesAll: List<AllHeroes.Heroes> = listOf()
 
     class ViewHolder(view: ItemHeroesLayoutBinding): RecyclerView.ViewHolder(view.root) {
         val ivHeroesImage = view.ivHeroesImage

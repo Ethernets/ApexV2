@@ -5,21 +5,30 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.apextracker.R
-import com.example.apextracker.databinding.FragmentHomeBinding
+import com.example.apextracker.application.ApexTrackerApplication
+import com.example.apextracker.databinding.FragmentHeroesBinding
 import com.example.apextracker.model.entities.AllHeroes
 import com.example.apextracker.view.activities.ProfileActivity
 import com.example.apextracker.view.adapters.HeroesAdapter
 import com.example.apextracker.viewmodel.HeroesViewModel
+import com.example.apextracker.viewmodel.ProfileViewModel
+import com.example.apextracker.viewmodel.ProfileViewModelFactory
 
 class HeroesFragment : Fragment() {
 
-    private lateinit var mBinding: FragmentHomeBinding
+    private var mBinding: FragmentHeroesBinding? = null
 
     private lateinit var mAllInfoApex: HeroesViewModel
+
+    private val mAllInfoApexViewModel: ProfileViewModel by viewModels {
+        ProfileViewModelFactory((requireActivity().application as ApexTrackerApplication).repository)
+       //FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,20 +40,18 @@ class HeroesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-            mBinding = FragmentHomeBinding.inflate(inflater, container, false)
-            return mBinding.root
+            mBinding = FragmentHeroesBinding.inflate(inflater, container, false)
+            return mBinding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mAllInfoApex = ViewModelProvider(this).get(HeroesViewModel::class.java)
+        mAllInfoApex =
+            ViewModelProvider(this).get(HeroesViewModel::class.java)
+
         mAllInfoApex.getAllInfoApexFromAPI()
 
-        mBinding.rvHeroList.layoutManager = GridLayoutManager(requireActivity(), 2)
-        val heroesAdapter = HeroesAdapter(this@HeroesFragment)
-
-        mBinding.rvHeroList.adapter = heroesAdapter
 
         AllInfoApexViewModelObserver()
     }
@@ -73,6 +80,8 @@ class HeroesFragment : Fragment() {
         Glide.with(requireActivity())
             .load(allInfoApex.legends.all.Gibraltar.ImgAssets)
             .centerCrop()
+            //.into(mBinding!!.)
+        //mBinding!!
 
     }
 
