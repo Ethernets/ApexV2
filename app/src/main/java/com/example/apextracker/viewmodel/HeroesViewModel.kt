@@ -22,11 +22,11 @@ class HeroesViewModel: ViewModel() {
     val allInfoApexResponse = MutableLiveData<AllHeroes.Heroes>()
     val allInfoApexLoadingError = MutableLiveData<Boolean>()
 
-    fun getAllInfoApexFromAPI(){
+    fun getAllInfoApexFromAPI(username: String){
         loadAllInfoApex.value = true
 
         compositeDisposable.add(
-            allInfoApexAPIService.getAllInfoApexTracker(playerName = "ethernetss")
+            allInfoApexAPIService.getAllInfoApexTracker(player = username)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<AllHeroes.Heroes>(){

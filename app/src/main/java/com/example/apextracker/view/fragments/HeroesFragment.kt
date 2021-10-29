@@ -47,10 +47,13 @@ class HeroesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val key = arguments?.getString("username", "")
+        Log.i("PHONE BLYAT", key.toString())
+
         mAllInfoApex =
             ViewModelProvider(this).get(HeroesViewModel::class.java)
 
-        mAllInfoApex.getAllInfoApexFromAPI()
+        mAllInfoApex.getAllInfoApexFromAPI("tot_sambiy")
 
 
         AllInfoApexViewModelObserver()

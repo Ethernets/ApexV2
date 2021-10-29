@@ -1,5 +1,6 @@
 package com.example.apextracker.model.network
 
+import android.media.AsyncPlayer
 import com.example.apextracker.model.entities.AllHeroes
 import com.example.apextracker.utils.Constants
 import io.reactivex.rxjava3.core.Single
@@ -16,9 +17,9 @@ class AllInfoApexAPIService {
         .build()
         .create(AllInfoApexAPI::class.java)
 
-    fun getAllInfoApexTracker(playerName: String): Single<AllHeroes.Heroes>{
+    fun getAllInfoApexTracker(player: String): Single<AllHeroes.Heroes>{
         return api.getHeroes(Constants.API_PLATFORM_VALUE,
-            playerName,
+            player,
             Constants.API_KEY_VALUE
         )
     }

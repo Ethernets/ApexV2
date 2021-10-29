@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.example.apextracker.R
@@ -16,7 +17,7 @@ class AuthorizationActivity : AppCompatActivity() {
 
     private var mPofile: Profile? = null
 
-    lateinit var mFragment: Fragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,12 @@ class AuthorizationActivity : AppCompatActivity() {
 
             val username = mBinding.etUsername.text.toString()
 
-            mFragment.arguments?.putString("username", username)
+            val mFragment = Fragment()
+
+            val tt = savedInstanceState?.putString("username", username)
+           // mFragment.arguments?.putBundle(tt?.toString())
+            //mFragment.arguments = bundleOf("username" to username)
+           // mFragment.arguments?.putString("username", username)
 
             startActivity(Intent(this@AuthorizationActivity, MainActivity::class.java)
 
