@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.apextracker">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".application.ApexTrackerApplication"
         android:allowBackup="true"
@@ -13,10 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApexTracker">
         <activity
+            android:name=".view.activities.AuthorizationActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activities.ProfileActivity"
+            android:configChanges="orientation"
             android:exported="false"
-            android:theme="@style/Theme.ApexTracker.NoActionBar"
-            android:configChanges="orientation"/>
+            android:theme="@style/Theme.ApexTracker.NoActionBar" />
         <activity
             android:name=".view.activities.SplashActivity"
             android:theme="@style/Theme.ApexTracker.NoActionBar">
@@ -26,7 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activities.MainActivity"></activity>
+        <activity android:name=".view.activities.MainActivity" />
     </application>
 
 </manifest>

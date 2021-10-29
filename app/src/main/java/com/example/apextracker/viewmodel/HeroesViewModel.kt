@@ -26,7 +26,7 @@ class HeroesViewModel: ViewModel() {
         loadAllInfoApex.value = true
 
         compositeDisposable.add(
-            allInfoApexAPIService.getAllInfoApexTracker()
+            allInfoApexAPIService.getAllInfoApexTracker(playerName = "ethernetss")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<AllHeroes.Heroes>(){

@@ -16,9 +16,9 @@ class AllInfoApexAPIService {
         .build()
         .create(AllInfoApexAPI::class.java)
 
-    fun getAllInfoApexTracker(): Single<AllHeroes.Heroes>{
+    fun getAllInfoApexTracker(playerName: String): Single<AllHeroes.Heroes>{
         return api.getHeroes(Constants.API_PLATFORM_VALUE,
-            Constants.API_PLAYER_VALUE,
+            playerName,
             Constants.API_KEY_VALUE
         )
     }

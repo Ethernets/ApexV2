@@ -11,5 +11,5 @@ object Constants {
     const val API_KEY: String = "auth"
     const val API_KEY_VALUE: String = "Gxbp4SE2e5kScsUmwevA"
     const val API_PLATFORM_VALUE: String = "PC"
-    const val API_PLAYER_VALUE: String = "Ethernetss"
+    var API_PLAYER_VALUE: String = ""
 }

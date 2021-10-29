@@ -45,7 +45,7 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
 
             override fun onAnimationEnd(animation: Animation?) {
                Handler(Looper.getMainLooper()).postDelayed({
-                   startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                   startActivity(Intent(this@SplashActivity, AuthorizationActivity::class.java))
                    finish()
                }, 1000)
             }

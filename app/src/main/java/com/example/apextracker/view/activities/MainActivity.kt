@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.apextracker.R
 import com.example.apextracker.databinding.ActivityMainBinding
+import com.example.apextracker.utils.Constants
 
 class MainActivity : AppCompatActivity() {
 
