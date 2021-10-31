@@ -13,11 +13,14 @@ import com.example.apextracker.R
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.FragmentHeroesBinding
 import com.example.apextracker.model.entities.AllHeroes
+import com.example.apextracker.model.entities.Profile
+import com.example.apextracker.utils.Constants
 import com.example.apextracker.view.activities.ProfileActivity
 import com.example.apextracker.view.adapters.HeroesAdapter
 import com.example.apextracker.viewmodel.HeroesViewModel
 import com.example.apextracker.viewmodel.ProfileViewModel
 import com.example.apextracker.viewmodel.ProfileViewModelFactory
+import java.util.*
 
 class HeroesFragment : Fragment() {
 
@@ -30,10 +33,29 @@ class HeroesFragment : Fragment() {
        //FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
     }
 
+    companion object{
+        fun newInstanceUsername(username: String): HeroesFragment{
+            val heroesFragment = HeroesFragment()
+            heroesFragment.arguments?.putString("username", username)
+            Constants.API_PLAYER_VALUE = username
+            return heroesFragment
+        }
+
+        fun newInstanceChkBxState(state: Boolean): HeroesFragment{
+            val heroesFragment = HeroesFragment()
+            heroesFragment.arguments?.putBoolean("state", state)
+            Constants.CHECK_BOX_STATE = state
+            return  heroesFragment
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,13 +69,12 @@ class HeroesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val key = arguments?.getString("username", "")
-        Log.i("PHONE BLYAT", key.toString())
 
         mAllInfoApex =
             ViewModelProvider(this).get(HeroesViewModel::class.java)
 
-        mAllInfoApex.getAllInfoApexFromAPI("tot_sambiy")
+        //Log.i("Apex TEST API", Constants.API_PLAYER_VALUE)
+        mAllInfoApex.getAllInfoApexFromAPI(Constants.API_PLAYER_VALUE)
 
 
         AllInfoApexViewModelObserver()
@@ -63,6 +84,26 @@ class HeroesFragment : Fragment() {
         mAllInfoApex.allInfoApexResponse.observe(viewLifecycleOwner,
             {allInfoApexResponse -> allInfoApexResponse?.let {
                 Log.i("Apex Info", "${allInfoApexResponse}")
+                if (Constants.CHECK_BOX_STATE){
+                    val userInfo = Profile(
+                        allInfoApexResponse.global.name,
+                        allInfoApexResponse.global.avatar,
+                        allInfoApexResponse.global.rank.rankDiv,
+                        allInfoApexResponse.global.rank.rankImg,
+                        allInfoApexResponse.global.rank.rankName,
+                        allInfoApexResponse.global.bans.isActive,
+                        allInfoApexResponse.realtime.isOnline,
+                        allInfoApexResponse.realtime.selectedLegend,
+                        allInfoApexResponse.global.level
+                    )
+                    val mFavDishViewModel: ProfileViewModel by viewModels {
+                       ProfileViewModelFactory((requireActivity().application as ApexTrackerApplication).repository)
+                    }
+                    Log.i("Apex Info User", userInfo.toString())
+                    //mFavDishViewModel.insert(userInfo)
+
+                }
+                setAllInfoApexResponseInUI(allInfoApexResponse.global)
             }}
         )
         mAllInfoApex.allInfoApexLoadingError.observe(viewLifecycleOwner,
@@ -79,10 +120,8 @@ class HeroesFragment : Fragment() {
             })
     }
 
-    fun setAllInfoApexResponseInUI(allInfoApex: AllHeroes.Heroes){
-        Glide.with(requireActivity())
-            .load(allInfoApex.legends.all.Gibraltar.ImgAssets)
-            .centerCrop()
+    fun setAllInfoApexResponseInUI(allInfoApex: AllHeroes.Global){
+
             //.into(mBinding!!.)
         //mBinding!!
 

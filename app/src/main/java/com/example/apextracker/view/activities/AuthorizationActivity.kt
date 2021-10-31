@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentActivity
 import com.example.apextracker.R
 import com.example.apextracker.databinding.ActivityAuthorizationBinding
 import com.example.apextracker.model.entities.Profile
+import com.example.apextracker.view.fragments.HeroesFragment
 
 class AuthorizationActivity : AppCompatActivity() {
 
@@ -27,17 +28,12 @@ class AuthorizationActivity : AppCompatActivity() {
         mBinding.btnSignIn.setOnClickListener{
 
             val username = mBinding.etUsername.text.toString()
+            val chBoxState = mBinding.chbRemember.isChecked
 
-            val mFragment = Fragment()
+            HeroesFragment.newInstanceUsername(username)
+            HeroesFragment.newInstanceChkBxState(chBoxState)
 
-            val tt = savedInstanceState?.putString("username", username)
-           // mFragment.arguments?.putBundle(tt?.toString())
-            //mFragment.arguments = bundleOf("username" to username)
-           // mFragment.arguments?.putString("username", username)
-
-            startActivity(Intent(this@AuthorizationActivity, MainActivity::class.java)
-
-            )
+            startActivity(Intent(this@AuthorizationActivity, MainActivity::class.java))
             finish()
         }
     }

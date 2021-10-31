@@ -6,12 +6,14 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "all_users_profile")
 data class Profile (
+    @ColumnInfo(name = "username") val username: String,
     @ColumnInfo val avatar: String,
-    @ColumnInfo(name = "avatar_source") val avatarSource: String,
-    @ColumnInfo val username: String,
-    @ColumnInfo val userDivision: String,
-    @ColumnInfo val userBanInfo: String,
-    @ColumnInfo(name = "user_online") val userOnline: Boolean = false,
-    @ColumnInfo val favoriteHero: Boolean = false,
+    @ColumnInfo val rankDivision: Int,
+    @ColumnInfo val rankImg: String,
+    @ColumnInfo val rankName: String,
+    @ColumnInfo(name = "user_ban") val userBan: Boolean,
+    @ColumnInfo(name = "user_online") val userOnline: Int = 0,
+    @ColumnInfo val selectedLegend: String,
+    @ColumnInfo val level: Int,
     @PrimaryKey(autoGenerate = true) val id: Int = 0
     )
