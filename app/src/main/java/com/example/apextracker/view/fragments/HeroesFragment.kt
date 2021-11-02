@@ -21,12 +21,17 @@ import com.example.apextracker.viewmodel.HeroesViewModel
 import com.example.apextracker.viewmodel.ProfileViewModel
 import com.example.apextracker.viewmodel.ProfileViewModelFactory
 import java.util.*
+import kotlin.collections.ArrayList
 
 class HeroesFragment : Fragment() {
 
     private var mBinding: FragmentHeroesBinding? = null
 
     private lateinit var mAllInfoApex: HeroesViewModel
+
+    private lateinit var mHeroesAdapter: HeroesAdapter
+
+    val allAdapterListHero = ArrayList<AllHeroes.AdapterListHero>()
 
     private val mAllInfoApexViewModel: ProfileViewModel by viewModels {
         ProfileViewModelFactory((requireActivity().application as ApexTrackerApplication).repository)
@@ -76,36 +81,41 @@ class HeroesFragment : Fragment() {
         //Log.i("Apex TEST API", Constants.API_PLAYER_VALUE)
         mAllInfoApex.getAllInfoApexFromAPI(Constants.API_PLAYER_VALUE)
 
+        mBinding?.rvHeroList?.layoutManager = GridLayoutManager(requireActivity(), 2)
+
+        mHeroesAdapter = HeroesAdapter(this@HeroesFragment)
+
+        mBinding?.rvHeroList?.adapter = mHeroesAdapter
 
         AllInfoApexViewModelObserver()
     }
 
+    val mFavDishViewModel: ProfileViewModel by viewModels {
+        ProfileViewModelFactory((requireActivity().application as ApexTrackerApplication).repository)
+    }
+
     fun AllInfoApexViewModelObserver(){
-        mAllInfoApex.allInfoApexResponse.observe(viewLifecycleOwner,
-            {allInfoApexResponse -> allInfoApexResponse?.let {
+        mAllInfoApex.allInfoApexResponse.observe(viewLifecycleOwner)
+            {allInfoApexResponse ->
+                allInfoApexResponse?.let {
                 Log.i("Apex Info", "${allInfoApexResponse}")
                 if (Constants.CHECK_BOX_STATE){
                     val userInfo = Profile(
                         allInfoApexResponse.global.name,
                         allInfoApexResponse.global.avatar,
-                        allInfoApexResponse.global.rank.rankDiv,
-                        allInfoApexResponse.global.rank.rankImg,
-                        allInfoApexResponse.global.rank.rankName,
-                        allInfoApexResponse.global.bans.isActive,
-                        allInfoApexResponse.realtime.isOnline,
-                        allInfoApexResponse.realtime.selectedLegend,
-                        allInfoApexResponse.global.level
+                        false
                     )
-                    val mFavDishViewModel: ProfileViewModel by viewModels {
-                       ProfileViewModelFactory((requireActivity().application as ApexTrackerApplication).repository)
+                    for ((key, value) in allInfoApexResponse.legends.all){
+                        allAdapterListHero.add(AllHeroes.AdapterListHero(key,value))
                     }
-                    Log.i("Apex Info User", userInfo.toString())
+
+                    mHeroesAdapter.heroesList(allAdapterListHero)
                     //mFavDishViewModel.insert(userInfo)
 
                 }
                 setAllInfoApexResponseInUI(allInfoApexResponse.global)
             }}
-        )
+
         mAllInfoApex.allInfoApexLoadingError.observe(viewLifecycleOwner,
             {
                 dataError -> dataError?.let {

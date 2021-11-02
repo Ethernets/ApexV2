@@ -11,7 +11,7 @@ import com.example.apextracker.model.entities.Heroes
 
 class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<HeroesAdapter.ViewHolder>() {
 
-    private var heroes: List<Heroes> = listOf()
+    private var heroes: List<AllHeroes.AdapterListHero> = listOf()
     private var heroesAll: List<AllHeroes.Heroes> = listOf()
 
     class ViewHolder(view: ItemHeroesLayoutBinding): RecyclerView.ViewHolder(view.root) {
@@ -29,9 +29,9 @@ class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<Heroes
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val hero = heroes[position]
         Glide.with(fragment)
-            .load(hero.imageUrl)
+            .load(hero.data.ImgAssets.icon)
             .into(holder.ivHeroesImage)
-        holder.tvTitle.text = hero.name
+            holder.tvTitle.text = hero.name
 
     }
 
@@ -39,8 +39,9 @@ class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<Heroes
         return heroes.size
     }
 
-    fun heroesList(list: List<Heroes>){
+    fun heroesList(list: List<AllHeroes.AdapterListHero>){
         heroes = list
         notifyDataSetChanged()
     }
+
 }
