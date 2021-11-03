@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.apextracker.model.entities.Profile
 
-@Database(entities = [Profile::class], version = 1)
+@Database(entities = [Profile::class], version = 3)
 abstract class ProfileRoomDatabase: RoomDatabase() {
     abstract fun profileDao(): IProfileDao
 
