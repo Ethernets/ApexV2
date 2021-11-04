@@ -1,5 +1,6 @@
 package com.example.apextracker.view.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.example.apextracker.R
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.FragmentHeroesBinding
 import com.example.apextracker.model.entities.AllHeroes
+import com.example.apextracker.model.entities.IProfileToActivity
 import com.example.apextracker.model.entities.Profile
 import com.example.apextracker.utils.Constants
 import com.example.apextracker.view.activities.ProfileActivity
@@ -31,6 +33,8 @@ class HeroesFragment : Fragment() {
     private lateinit var mHeroesAdapter: HeroesAdapter
 
     private val allAdapterListHero = ArrayList<AllHeroes.AdapterListHero>()
+
+    private lateinit var testApex: AllHeroes.Global
 
 
     companion object{
@@ -85,6 +89,7 @@ class HeroesFragment : Fragment() {
         InfoApexViewModelObserver()
     }
 
+
     private fun InfoApexViewModelObserver(){
         mAllInfoApex.allInfoApexResponse.observe(viewLifecycleOwner)
             {allInfoApexResponse ->
@@ -99,7 +104,6 @@ class HeroesFragment : Fragment() {
                     for ((key, value) in allInfoApexResponse.legends.all){
                         allAdapterListHero.add(AllHeroes.AdapterListHero(key,value))
                     }
-
                     Log.i("Apex Info 2", mHeroesAdapter.toString())
                     mProfileViewModel.insert(userInfo)
 
@@ -108,7 +112,6 @@ class HeroesFragment : Fragment() {
                         allAdapterListHero.add(AllHeroes.AdapterListHero(key,value))
                     }
 
-                    Log.i("Apex Info 3", mHeroesAdapter.toString())
                 }
 
                 mHeroesAdapter.heroesList(allAdapterListHero)
