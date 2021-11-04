@@ -27,9 +27,9 @@ class ProfileActivity : AppCompatActivity(), IProfileToActivity {
         myBinding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(myBinding.root)
 
+        myBinding.tvUsername.text = intent.getStringExtra("name")
 
-
-        setupActionBar()
+            setupActionBar()
     }
 
     private fun setupActionBar() {

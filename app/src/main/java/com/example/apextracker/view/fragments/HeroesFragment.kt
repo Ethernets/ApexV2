@@ -36,6 +36,8 @@ class HeroesFragment : Fragment() {
 
     private lateinit var testApex: AllHeroes.Global
 
+    private lateinit var tt: String
+
 
     companion object{
         fun newInstanceUsername(username: String): HeroesFragment{
@@ -113,6 +115,7 @@ class HeroesFragment : Fragment() {
                     }
 
                 }
+                    tt = allInfoApexResponse.global.name
 
                 mHeroesAdapter.heroesList(allAdapterListHero)
 
@@ -148,7 +151,7 @@ class HeroesFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.action_profile -> {
-                startActivity(Intent(requireActivity(), ProfileActivity::class.java))
+                startActivity(Intent(requireActivity(), ProfileActivity::class.java).putExtra("name",tt))
                 return true
             }
         }
