@@ -1,5 +1,8 @@
 package com.example.apextracker.model.entities
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 object AllHeroes{
 data class Heroes(
     val global: Global,
@@ -7,6 +10,7 @@ data class Heroes(
     val realtime: Realtime
 )
 
+@Parcelize
 data class Global(
     val arena: Arena,
     val avatar: String,
@@ -19,7 +23,7 @@ data class Global(
     val rank: Rank,
     val toNextLevelPercent: Int,
     val uid: Long
-)
+):Parcelable
 
 data class Legends(
     val all: Map<String, All> = emptyMap(),
@@ -38,7 +42,7 @@ data class Realtime(
     val selectedLegend: String
 )
 
-
+@Parcelize
 data class Arena(
     val ladderPosPlatform: Int,
     val rankDiv: Int,
@@ -46,21 +50,23 @@ data class Arena(
     val rankName: String,
     val rankScore: Int,
     val rankedSeason: String
-)
+):Parcelable
 
+@Parcelize
 data class Badge(
     val name: String,
     val value: Int
-)
+):Parcelable
 
+@Parcelize
 data class Bans(
     val isActive: Boolean,
     val last_banReason: String,
     val remainingSeconds: Int
-)
+):Parcelable
 
 
-
+@Parcelize
 data class Rank(
     val ladderPosPlatform: Int,
     val rankDiv: Int,
@@ -68,7 +74,7 @@ data class Rank(
     val rankName: String,
     val rankScore: Int,
     val rankedSeason: String
-)
+):Parcelable
 
 
 data class All(

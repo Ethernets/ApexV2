@@ -1,6 +1,5 @@
 package com.example.apextracker.view.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +12,6 @@ import com.example.apextracker.R
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.FragmentHeroesBinding
 import com.example.apextracker.model.entities.AllHeroes
-import com.example.apextracker.model.entities.IProfileToActivity
 import com.example.apextracker.model.entities.Profile
 import com.example.apextracker.utils.Constants
 import com.example.apextracker.view.activities.ProfileActivity
@@ -115,7 +113,8 @@ class HeroesFragment : Fragment() {
                     }
 
                 }
-                    tt = allInfoApexResponse.global.name
+
+                    testApex = allInfoApexResponse.global
 
                 mHeroesAdapter.heroesList(allAdapterListHero)
 
@@ -151,7 +150,9 @@ class HeroesFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.action_profile -> {
-                startActivity(Intent(requireActivity(), ProfileActivity::class.java).putExtra("name",tt))
+                //startActivity(Intent(requireActivity(), ProfileActivity::class.java).putExtra("name",1))
+                startActivity(Intent(requireActivity(), ProfileActivity::class.java)
+                            .putExtra("profile",testApex))
                 return true
             }
         }

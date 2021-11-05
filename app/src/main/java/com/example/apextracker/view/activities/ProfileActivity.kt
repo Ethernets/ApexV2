@@ -4,19 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import com.example.apextracker.R
+import com.bumptech.glide.Glide
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.ActivityProfileBinding
 import com.example.apextracker.model.entities.AllHeroes
-import com.example.apextracker.model.entities.IProfileToActivity
 import com.example.apextracker.model.entities.Profile
 import com.example.apextracker.viewmodel.ProfileViewModel
 import com.example.apextracker.viewmodel.ProfileViewModelFactory
 
-class ProfileActivity : AppCompatActivity(), IProfileToActivity {
+class ProfileActivity : AppCompatActivity(){
     private lateinit var myBinding: ActivityProfileBinding
-
-    private var mProfileDetails: Profile? = null
 
     private val mProfileViewModel: ProfileViewModel by viewModels {
         ProfileViewModelFactory((application as ApexTrackerApplication).repository)
@@ -27,7 +24,14 @@ class ProfileActivity : AppCompatActivity(), IProfileToActivity {
         myBinding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(myBinding.root)
 
-        myBinding.tvUsername.text = intent.getStringExtra("name")
+        val global = intent.getParcelableExtra("profile") as? AllHeroes.Global
+        Log.i("Apex Info 3", global.toString())
+        myBinding.tvUsername.text = global?.name
+        myBinding.tvDivision.text = ("${global?.rank?.rankName} ${global?.rank?.rankDiv}")
+        Glide.with(this)
+            .load(global?.avatar)
+            .into(myBinding.ivAvatar)
+
 
             setupActionBar()
     }
@@ -38,11 +42,5 @@ class ProfileActivity : AppCompatActivity(), IProfileToActivity {
         myBinding.toolbarProfile.setNavigationOnClickListener {
             onBackPressed()
         }
-    }
-
-    override fun profileInfo(data: AllHeroes.Global) {
-        myBinding.tvUsername.text = data.name
-        myBinding.tvDivision.text = data.rank.rankName
-        Log.i("Apex Info 3", data.toString())
     }
 }
