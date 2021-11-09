@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ApexTracker</string>
-    <string name="title_home">Home</string>
     <string name="title_heroes">Heroes</string>
     <string name="title_match_history">Match history</string>
     <string name="title_funny_videos">Funny videos</string>
