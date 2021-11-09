@@ -1,5 +1,6 @@
 package com.example.apextracker.view.activities
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,11 +27,23 @@ class ProfileActivity : AppCompatActivity(){
 
         val global = intent.getParcelableExtra("profile") as? AllHeroes.Global
         Log.i("Apex Info 3", global.toString())
-        myBinding.tvUsername.text = global?.name
-        myBinding.tvDivision.text = ("${global?.rank?.rankName} ${global?.rank?.rankDiv}")
+        if(global?.bans?.isActive == true){
+            myBinding.tvUsername.setTextColor(Color.parseColor("#78002e"))
+            myBinding.tvUsername.text = ("${global.name} (Banned for ${global.bans.remainingSeconds / 60} time)")
+        }else {
+            myBinding.tvUsername.text = global?.name
+        }
+        myBinding.tvDivision.text = ("${global?.rank?.rankName} ${global?.rank?.rankDiv} " +
+                                    "(Rank Score: ${global?.rank?.rankScore})")
+        myBinding.tvLevel.text = ("Level: ${global?.level} (Next level ${global?.toNextLevelPercent}%)")
         Glide.with(this)
             .load(global?.avatar)
             .into(myBinding.ivAvatar)
+
+        Glide.with(this)
+            .load(global?.rank?.rankImg)
+            .circleCrop()
+            .into(myBinding.ivDevision)
 
 
             setupActionBar()

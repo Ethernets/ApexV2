@@ -8,14 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.apextracker.R
-import com.example.apextracker.databinding.FragmentNotificationsBinding
+import com.example.apextracker.databinding.FragmentFunnyVideosBinding
 import com.example.apextracker.view.activities.ProfileActivity
-import com.example.apextracker.viewmodel.NotificationsViewModel
+import com.example.apextracker.viewmodel.FunyVideosViewModel
 
-class NotificationsFragment : Fragment() {
+class FunnyVideosFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
-    private var _binding: FragmentNotificationsBinding? = null
+    private lateinit var funyVideosViewModel: FunyVideosViewModel
+    private var _binding: FragmentFunnyVideosBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -31,14 +31,14 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        funyVideosViewModel =
+            ViewModelProvider(this).get(FunyVideosViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentFunnyVideosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        funyVideosViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

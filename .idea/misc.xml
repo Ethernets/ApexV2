@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_apps/ApexV2/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.203125" />
+        <entry key="..\:/Android_apps/ApexV2/app/src/main/res/drawable/ic_funny_videos_24.xml" value="0.203125" />
+        <entry key="..\:/Android_apps/ApexV2/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.203125" />
+        <entry key="..\:/Android_apps/ApexV2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.203125" />
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/activity_profile.xml" value="0.4" />
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/item_heroes_layout.xml" value="0.1828125" />
+        <entry key="..\:/Android_apps/ApexV2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1828125" />
         <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/layout/activity_heroes.xml" value="0.8" />
         <entry key="..\:/Android_apps/StudyActivityLifeCyl/app/src/main/res/layout/list_hero_view.xml" value="0.8" />
       </map>
