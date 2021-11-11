@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.apextracker.databinding.ItemHeroesLayoutBinding
 import com.example.apextracker.model.entities.AllHeroes
 import com.example.apextracker.model.entities.Heroes
+import com.example.apextracker.view.fragments.HeroesFragment
 
 class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<HeroesAdapter.ViewHolder>() {
 
@@ -32,6 +33,12 @@ class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<Heroes
             .load(hero.data.ImgAssets.icon)
             .into(holder.ivHeroesImage)
             holder.tvTitle.text = hero.name
+        holder.itemView.setOnClickListener{
+            if (fragment is HeroesFragment) {
+                fragment.heroesDetails()
+            }
+
+        }
 
     }
 

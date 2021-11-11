@@ -7,6 +7,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.apextracker.R
 import com.example.apextracker.application.ApexTrackerApplication
@@ -140,6 +141,10 @@ class HeroesFragment : Fragment() {
             //.into(mBinding!!.)
         //mBinding!!
 
+    }
+
+    fun heroesDetails(){
+        findNavController().navigate(HeroesFragmentDirections.actionAllHeroesToHeroesDetails())
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

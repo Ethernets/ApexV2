@@ -9,7 +9,11 @@
         android:id="@+id/navigation_all_heroes"
         android:name="com.example.apextracker.view.fragments.HeroesFragment"
         android:label="@string/title_heroes"
-        tools:layout="@layout/fragment_heroes" />
+        tools:layout="@layout/fragment_heroes" >
+        <action
+            android:id="@+id/action_all_heroes_to_heroes_details"
+            app:destination="@id/navigation_heroes_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_match_history"
@@ -22,4 +26,10 @@
         android:name="com.example.apextracker.view.fragments.FunnyVideosFragment"
         android:label="@string/title_funny_videos"
         tools:layout="@layout/fragment_funny_videos" />
+    <fragment
+        android:id="@+id/navigation_heroes_details"
+        android:name="com.example.apextracker.view.fragments.DetailsHeroesFragment"
+        android:label="@string/title_heroes_details"
+        tools:layout="@layout/fragment_details_heroes"
+        />
 </navigation>

@@ -3,6 +3,7 @@
     <string name="title_heroes">Heroes</string>
     <string name="title_match_history">Match history</string>
     <string name="title_funny_videos">Funny videos</string>
+    <string name="title_heroes_details">Heroes Details</string>
     <string name="splash_screen_title">APEX LEGENDS tracker</string>
     <string name="user_profile">Profile</string>
     <string name="label_no_heroes_added_yet">No Heroes added yet</string>
