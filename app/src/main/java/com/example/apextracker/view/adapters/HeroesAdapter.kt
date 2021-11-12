@@ -12,7 +12,7 @@ import com.example.apextracker.view.fragments.HeroesFragment
 
 class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<HeroesAdapter.ViewHolder>() {
 
-    private var heroes: List<AllHeroes.AdapterListHero> = listOf()
+    private var heroes: List<Heroes> = listOf() //List<AllHeroes.AdapterListHero> = listOf()
     private var heroesAll: List<AllHeroes.Heroes> = listOf()
 
     class ViewHolder(view: ItemHeroesLayoutBinding): RecyclerView.ViewHolder(view.root) {
@@ -35,7 +35,7 @@ class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<Heroes
             holder.tvTitle.text = hero.name
         holder.itemView.setOnClickListener{
             if (fragment is HeroesFragment) {
-                fragment.heroesDetails()
+                fragment.heroesDetails(hero)
             }
 
         }
@@ -46,7 +46,7 @@ class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<Heroes
         return heroes.size
     }
 
-    fun heroesList(list: List<AllHeroes.AdapterListHero>){
+    fun heroesList(list: List<Heroes>){//(list: List<AllHeroes.AdapterListHero>){
         heroes = list
         notifyDataSetChanged()
     }

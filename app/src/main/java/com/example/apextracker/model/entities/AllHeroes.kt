@@ -25,10 +25,10 @@ data class Global(
     val uid: Long
 ):Parcelable
 
+@Parcelize
 data class Legends(
-    val all: Map<String, All> = emptyMap(),
-    val selected: Selected
-)
+    val all: Map<String, All> = emptyMap()
+):Parcelable
 
 data class Realtime(
     val canJoin: Int,
@@ -65,7 +65,6 @@ data class Bans(
     val remainingSeconds: Int
 ):Parcelable
 
-
 @Parcelize
 data class Rank(
     val ladderPosPlatform: Int,
@@ -76,64 +75,23 @@ data class Rank(
     val rankedSeason: String
 ):Parcelable
 
-
+@Parcelize
 data class All(
     val data: List<Data>? = emptyList(),
     val ImgAssets: ImgAssets
-)
+):Parcelable
 
-data class AdapterListHero(
-    val name: String,
-    val data: All
-)
-
-data class Selected(
-    val ImgAssets: ImgAssetsXXXXXXXXXXXXXXXXXXX,
-    val LegendName: String,
-    val `data`: List<DataXXXXXXXXXXXX>,
-    val gameInfo: GameInfoX
-)
-
-
+@Parcelize
 data class ImgAssets(
     val banner: String,
     val icon: String
-)
+):Parcelable
 
+@Parcelize
 data class Data(
     val key: String,
     val name: String,
     val value: Int
-)
-
-
-data class ImgAssetsXXXXXXXXXXXXXXXXXXX(
-    val banner: String,
-    val icon: String
-)
-
-data class DataXXXXXXXXXXXX(
-    val key: String,
-    val name: String,
-    val value: Int
-)
-
-data class GameInfoX(
-    val badges: List<BadgeXX>,
-    val frame: String,
-    val frameRarity: String,
-    val intro: String,
-    val introRarity: String,
-    val pose: String,
-    val poseRarity: String,
-    val skin: String,
-    val skinRarity: String
-)
-
-data class BadgeXX(
-    val category: String,
-    val name: String,
-    val value: Int
-)
+):Parcelable
 
 }

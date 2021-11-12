@@ -30,6 +30,13 @@
         android:id="@+id/navigation_heroes_details"
         android:name="com.example.apextracker.view.fragments.DetailsHeroesFragment"
         android:label="@string/title_heroes_details"
-        tools:layout="@layout/fragment_details_heroes"
-        />
+        tools:layout="@layout/fragment_details_heroes">
+            <argument
+                android:name="heroesDetails"
+                app:argType="com.example.apextracker.model.entities.Heroes"
+                />
+
+
+    </fragment>
+
 </navigation>

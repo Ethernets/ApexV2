@@ -13,6 +13,7 @@ import com.example.apextracker.R
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.FragmentHeroesBinding
 import com.example.apextracker.model.entities.AllHeroes
+import com.example.apextracker.model.entities.Heroes
 import com.example.apextracker.model.entities.Profile
 import com.example.apextracker.utils.Constants
 import com.example.apextracker.view.activities.ProfileActivity
@@ -31,7 +32,7 @@ class HeroesFragment : Fragment() {
 
     private lateinit var mHeroesAdapter: HeroesAdapter
 
-    private val allAdapterListHero = ArrayList<AllHeroes.AdapterListHero>()
+    private val allAdapterListHero = ArrayList<Heroes>()
 
     private lateinit var testApex: AllHeroes.Global
 
@@ -103,14 +104,14 @@ class HeroesFragment : Fragment() {
                         false
                     )
                     for ((key, value) in allInfoApexResponse.legends.all){
-                        allAdapterListHero.add(AllHeroes.AdapterListHero(key,value))
+                        allAdapterListHero.add(Heroes(key,value))
                     }
                     Log.i("Apex Info 2", mHeroesAdapter.toString())
                     mProfileViewModel.insert(userInfo)
 
                 }else{
                     for ((key, value) in allInfoApexResponse.legends.all){
-                        allAdapterListHero.add(AllHeroes.AdapterListHero(key,value))
+                        allAdapterListHero.add(Heroes(key,value))
                     }
 
                 }
@@ -143,8 +144,8 @@ class HeroesFragment : Fragment() {
 
     }
 
-    fun heroesDetails(){
-        findNavController().navigate(HeroesFragmentDirections.actionAllHeroesToHeroesDetails())
+    fun heroesDetails(legends: Heroes){
+        findNavController().navigate(HeroesFragmentDirections.actionAllHeroesToHeroesDetails(legends))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
