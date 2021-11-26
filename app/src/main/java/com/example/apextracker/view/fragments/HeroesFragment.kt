@@ -1,5 +1,7 @@
 package com.example.apextracker.view.fragments
 
+import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -36,7 +38,7 @@ class HeroesFragment : Fragment() {
 
     private lateinit var testApex: AllHeroes.Global
 
-    private lateinit var tt: String
+    private var mProgressDialog: Dialog? = null
 
 
     companion object{
@@ -72,6 +74,20 @@ class HeroesFragment : Fragment() {
     ): View {
             mBinding = FragmentHeroesBinding.inflate(inflater, container, false)
             return mBinding!!.root
+    }
+
+    private fun showCustomProgressDialog(){
+        mProgressDialog = Dialog(requireActivity())
+        mProgressDialog?.let {
+            it.setContentView(R.layout.dilog_custom_progress)
+            it.show()
+        }
+    }
+
+    private fun hideProgressDialog(){
+        mProgressDialog?.let {
+            it.dismiss()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -115,12 +131,11 @@ class HeroesFragment : Fragment() {
                     }
 
                 }
-
-                    testApex = allInfoApexResponse.global
+                 testApex = allInfoApexResponse.global
 
                 mHeroesAdapter.heroesList(allAdapterListHero)
 
-                setAllInfoApexResponseInUI(allInfoApexResponse.global)
+                setAllInfoApexResponseInUI(allInfoApexResponse)
             }}
 
         mAllInfoApex.allInfoApexLoadingError.observe(viewLifecycleOwner,
@@ -130,14 +145,19 @@ class HeroesFragment : Fragment() {
             }
             })
         mAllInfoApex.loadAllInfoApex.observe(viewLifecycleOwner,
-            {
-                loadAllInfoApex -> loadAllInfoApex?.let {
+            { loadAllInfoApex ->
+                loadAllInfoApex?.let {
                     Log.i("Apex Loading", "$loadAllInfoApex")
+                    if(loadAllInfoApex) {
+                        showCustomProgressDialog()
+                    } else {
+                        hideProgressDialog()
+                    }
                 }
             })
     }
 
-    private fun setAllInfoApexResponseInUI(allInfoApex: AllHeroes.Global){
+    private fun setAllInfoApexResponseInUI(allInfoApex: AllHeroes.Heroes){
 
             //.into(mBinding!!.)
         //mBinding!!
@@ -165,8 +185,8 @@ class HeroesFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        mBinding
+    override fun onDestroy() {
+        super.onDestroy()
+        mBinding = null
     }
 }

@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.ActivityProfileBinding
 import com.example.apextracker.model.entities.AllHeroes
-import com.example.apextracker.model.entities.Profile
 import com.example.apextracker.viewmodel.ProfileViewModel
 import com.example.apextracker.viewmodel.ProfileViewModelFactory
 

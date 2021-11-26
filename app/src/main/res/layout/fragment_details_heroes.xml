@@ -48,6 +48,55 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:text="value"
                 android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_data_name2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="name_1"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_data_value2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="value_1"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_data_name3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="name_2"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_data_value3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="value_2"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_data_name4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="name"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_data_value4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="value"
+                android:textColor="@color/black" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -60,13 +109,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/iv_heroes_details"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_212sdp"
-                android:background="#F1F1F1F1"
-                android:contentDescription="@string/image_contentDescription"
-                android:scaleType="fitXY" />
+        <ImageView
+            android:id="@+id/iv_heroes_details"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_140sdp"
+            android:background="#F1F1F1F1"
+            android:contentDescription="@string/image_contentDescription"
+            android:scaleType="fitXY" />
 
     </RelativeLayout>
 
