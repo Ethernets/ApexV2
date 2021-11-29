@@ -9,8 +9,10 @@ import com.bumptech.glide.Glide
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.ActivityProfileBinding
 import com.example.apextracker.model.entities.AllHeroes
+import com.example.apextracker.model.entities.Profile
 import com.example.apextracker.viewmodel.ProfileViewModel
 import com.example.apextracker.viewmodel.ProfileViewModelFactory
+import kotlinx.coroutines.flow.Flow
 
 class ProfileActivity : AppCompatActivity(){
     private lateinit var myBinding: ActivityProfileBinding
@@ -44,8 +46,14 @@ class ProfileActivity : AppCompatActivity(){
             .circleCrop()
             .into(myBinding.ivDevision)
 
+//myBinding.btExitProfile.setOnClickListener{
+
+//    mProfileViewModel.delete()
+//}
+
 
             setupActionBar()
+        deleteUserProfile()
     }
 
     private fun setupActionBar() {
@@ -53,6 +61,18 @@ class ProfileActivity : AppCompatActivity(){
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         myBinding.toolbarProfile.setNavigationOnClickListener {
             onBackPressed()
+        }
+    }
+
+    private fun deleteUserProfile(){
+    mProfileViewModel.allUsersList.observe(this){
+        Log.i("Delete", it.toString())
+        //mProfileViewModel.delete(it)
+    }
+
+
+        myBinding.btExitProfile.setOnClickListener{
+           // mProfileViewModel.delete(test)
         }
     }
 }

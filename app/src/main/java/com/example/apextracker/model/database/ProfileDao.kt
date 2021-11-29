@@ -1,6 +1,7 @@
 package com.example.apextracker.model.database
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.apextracker.model.entities.Profile
@@ -13,4 +14,8 @@ interface IProfileDao {
 
     @Query("SELECT * FROM ALL_USERS_PROFILE ORDER BY ID")
     fun getAllUsersList(): Flow<List<Profile>>
+
+    @Delete
+    suspend fun deleteUserProfileDetails(profile: Profile)
+
 }
