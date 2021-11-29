@@ -1,5 +1,6 @@
 package com.example.apextracker.view.activities
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -72,7 +73,9 @@ class ProfileActivity : AppCompatActivity(){
 
 
         myBinding.btExitProfile.setOnClickListener{
-           // mProfileViewModel.delete(test)
+          startActivity(Intent(this, AuthorizationActivity::class.java))
+            mProfileViewModel.delete()
+            finish()
         }
     }
 }

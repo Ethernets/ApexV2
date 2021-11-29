@@ -15,7 +15,7 @@ interface IProfileDao {
     @Query("SELECT * FROM ALL_USERS_PROFILE ORDER BY ID")
     fun getAllUsersList(): Flow<List<Profile>>
 
-    @Delete
-    suspend fun deleteUserProfileDetails(profile: Profile)
+    @Query("DELETE FROM ALL_USERS_PROFILE")
+    suspend fun deleteUserProfileDetails()
 
 }

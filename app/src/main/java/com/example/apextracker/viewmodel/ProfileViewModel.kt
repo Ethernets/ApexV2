@@ -13,8 +13,8 @@ class ProfileViewModel(private val repository: ProfileRepository): ViewModel() {
 
     val allUsersList: LiveData<List<Profile>> = repository.allUsersList.asLiveData()
 
-    fun delete(profile: Profile) = viewModelScope.launch {
-        repository.deleteUserProfile(profile)
+    fun delete() = viewModelScope.launch {
+        repository.deleteUserProfile()
     }
 }
 
