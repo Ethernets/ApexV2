@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_80sdp"
         android:layout_marginEnd="@dimen/_12sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,64 +38,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:text="name"
-                android:textColor="@color/black" />
+                android:text="data"
+                android:textColor="@color/gray_600" />
 
             <TextView
-                android:id="@+id/tv_data_value"
+                android:id="@+id/tv_data_name_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:text="value"
-                android:textColor="@color/black" />
+                android:text="data_2"
+                android:textColor="@color/gray_600" />
 
             <TextView
-                android:id="@+id/tv_data_name2"
+                android:id="@+id/tv_data_name_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:text="name_1"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_data_value2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:text="value_1"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_data_name3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:text="name_2"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_data_value3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:text="value_2"
-                android:textColor="@color/black" />
+                android:text="data_3"
+                android:textColor="@color/gray_600" />
 
             <TextView
                 android:id="@+id/tv_data_name4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                android:text="name"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_data_value4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                android:text="value"
-                android:textColor="@color/black" />
+                android:text="data_4"
+                android:textColor="@color/gray_600" />
 
         </LinearLayout>
 

@@ -2,20 +2,21 @@ package com.example.apextracker.view.activities
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.example.apextracker.R
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.ActivityProfileBinding
 import com.example.apextracker.model.entities.AllHeroes
-import com.example.apextracker.model.entities.Profile
 import com.example.apextracker.viewmodel.ProfileViewModel
 import com.example.apextracker.viewmodel.ProfileViewModelFactory
-import kotlinx.coroutines.flow.Flow
 
-class ProfileActivity : AppCompatActivity(){
+class ProfileActivity : AppCompatActivity() {
     private lateinit var myBinding: ActivityProfileBinding
 
     private val mProfileViewModel: ProfileViewModel by viewModels {
@@ -29,15 +30,17 @@ class ProfileActivity : AppCompatActivity(){
 
         val global = intent.getParcelableExtra("profile") as? AllHeroes.Global
         Log.i("Apex Info 3", global.toString())
-        if(global?.bans?.isActive == true){
+        if(global?.bans?.isActive == true) {
             myBinding.tvUsername.setTextColor(Color.parseColor("#78002e"))
-            myBinding.tvUsername.text = ("${global.name} (Banned for ${global.bans.remainingSeconds / 60} time)")
-        }else {
+            myBinding.tvUsername.text =
+                ("${global.name} (Banned for ${global.bans.remainingSeconds / 60} time)")
+        } else {
             myBinding.tvUsername.text = global?.name
         }
         myBinding.tvDivision.text = ("${global?.rank?.rankName} ${global?.rank?.rankDiv} " +
-                                    "(Rank Score: ${global?.rank?.rankScore})")
-        myBinding.tvLevel.text = ("Level: ${global?.level} (Next level ${global?.toNextLevelPercent}%)")
+                "(Rank Score: ${global?.rank?.rankScore})")
+        myBinding.tvLevel.text =
+            ("Level: ${global?.level} (Next level ${global?.toNextLevelPercent}%)")
         Glide.with(this)
             .load(global?.avatar)
             .into(myBinding.ivAvatar)
@@ -53,8 +56,25 @@ class ProfileActivity : AppCompatActivity(){
 //}
 
 
-            setupActionBar()
+        setupActionBar()
         deleteUserProfile()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_exit, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_exit_profile -> {
+                mProfileViewModel.delete()
+                startActivity(Intent(this, AuthorizationActivity::class.java))
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setupActionBar() {
@@ -65,17 +85,10 @@ class ProfileActivity : AppCompatActivity(){
         }
     }
 
-    private fun deleteUserProfile(){
-    mProfileViewModel.allUsersList.observe(this){
-        Log.i("Delete", it.toString())
-        //mProfileViewModel.delete(it)
-    }
-
-
-        myBinding.btExitProfile.setOnClickListener{
-          startActivity(Intent(this, AuthorizationActivity::class.java))
-            mProfileViewModel.delete()
-            finish()
+    private fun deleteUserProfile() {
+        mProfileViewModel.allUsersList.observe(this) {
+            Log.i("Delete", it.toString())
+            //mProfileViewModel.delete(it)
         }
     }
 }

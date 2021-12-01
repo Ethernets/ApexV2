@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,7 @@ import com.example.apextracker.model.entities.AllHeroes
 import com.example.apextracker.model.entities.Heroes
 import com.example.apextracker.model.entities.Profile
 import com.example.apextracker.utils.Constants
+import com.example.apextracker.view.activities.AuthorizationActivity
 import com.example.apextracker.view.activities.ProfileActivity
 import com.example.apextracker.view.adapters.HeroesAdapter
 import com.example.apextracker.viewmodel.HeroesViewModel
@@ -140,7 +142,16 @@ class HeroesFragment : Fragment() {
         mAllInfoApex.allInfoApexLoadingError.observe(viewLifecycleOwner,
             { dataError ->
                 dataError?.let {
-                    Log.i("Error Apex API", "$dataError")
+                    if(dataError) {
+                        Toast.makeText(
+                            requireActivity(),
+                            "User not found",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        startActivity(Intent(requireActivity(), AuthorizationActivity::class.java))
+
+                        Log.i("Error Apex API", "$dataError")
+                    }
                 }
             })
         mAllInfoApex.loadAllInfoApex.observe(viewLifecycleOwner,

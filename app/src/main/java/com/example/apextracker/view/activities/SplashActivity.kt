@@ -10,10 +10,8 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LifecycleOwner
 import com.example.apextracker.R
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.ActivitySplashBinding
@@ -56,25 +54,30 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-               Handler(Looper.getMainLooper()).postDelayed({
-                   mProfileViewModel.allUsersList.observe(this@SplashActivity){
-                           profile -> profile.let {
-                       if (profile.isNotEmpty()) {
-                           HeroesFragment.newInstanceUsername(profile.first().username)
-                           HeroesFragment.newInstanceChkBxState(profile.first().userLogout)
-                           Log.i("Apex Splash Info isNotEmpty", profile.toString())
-                           startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                           finish()
-                       }else{
-                           Log.i("Apex Splash Info", profile.toString())
-                           startActivity(Intent(this@SplashActivity, AuthorizationActivity::class.java))
-                           finish()
-                       }
+                Handler(Looper.getMainLooper()).postDelayed({
+                    mProfileViewModel.allUsersList.observe(this@SplashActivity) { profile ->
+                        profile.let {
+                            if(profile.isNotEmpty()) {
+                                HeroesFragment.newInstanceUsername(profile.first().username)
+                                HeroesFragment.newInstanceChkBxState(profile.first().userLogout)
+                                Log.i("Apex Splash Info isNotEmpty", profile.toString())
+                                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                                finish()
+                            } else {
+                                Log.i("Apex Splash Info", profile.toString())
+                                startActivity(
+                                    Intent(
+                                        this@SplashActivity,
+                                        AuthorizationActivity::class.java
+                                    )
+                                )
+                                finish()
+                            }
 
-                   }
-                   }
+                        }
+                    }
 
-               }, 1000)
+                }, 1000)
             }
 
             override fun onAnimationRepeat(animation: Animation?) {
