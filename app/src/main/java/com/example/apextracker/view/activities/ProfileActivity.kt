@@ -29,7 +29,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(myBinding.root)
 
         val global = intent.getParcelableExtra("profile") as? AllHeroes.Global
-        Log.i("Apex Info 3", global.toString())
+        global?.toString()?.let { Log.i("Apex Info 3", it) }
         if(global?.bans?.isActive == true) {
             myBinding.tvUsername.setTextColor(Color.parseColor("#78002e"))
             myBinding.tvUsername.text =
@@ -43,6 +43,7 @@ class ProfileActivity : AppCompatActivity() {
             ("Level: ${global?.level} (Next level ${global?.toNextLevelPercent}%)")
         Glide.with(this)
             .load(global?.avatar)
+            .error(R.drawable.images_err)
             .into(myBinding.ivAvatar)
 
         Glide.with(this)

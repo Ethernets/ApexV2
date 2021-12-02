@@ -42,23 +42,51 @@ class DetailsHeroesFragment : Fragment() {
                 var extraText = ""
                 val shareWith = "Share with"
 
-                mHeroesDetails.let {
-                    val image = it?.data?.ImgAssets?.icon
+                mHeroesDetails?.let { values ->
+                    val image = values.data.ImgAssets.icon
                     var heroesDetail = ""
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         heroesDetail = Html.fromHtml(
-                            it?.name,
+                            values.name,
                             Html.FROM_HTML_MODE_COMPACT
                         ).toString()
                     } else {
                         @Suppress("DEPRECATION")
-                        heroesDetail = Html.fromHtml(it?.name).toString()
+                        heroesDetail = Html.fromHtml(values.name).toString()
                     }
 
                     extraText =
                         "$image \n" +
-                                "\n Name: ${it?.name} \n" +
-                                "\n data: ${it?.data?.data}"
+                                "\n Hero: ${values.name} \n" +
+                                when {
+                                    values.data.data.isNullOrEmpty() -> {
+                                        "\n DATA NOT FOUND"
+                                    }
+                                    values.data.data.size >= 4 -> {
+                                        if(values.name == "Horizon"){
+                                            "\n ${values.data.data[0].name} - ${values.data.data[0].value} \n" +
+                                                    "\n ${values.data.data[1].name} - ${values.data.data[1].value} \n" +
+                                                    "\n ${values.data.data[2].name} - ${values.data.data[2].value} \n" +
+                                                    "\n ${values.data.data[3].name} - ${values.data.data[3].value} \n"
+
+                                        }else {
+                                            "\n ${values.data.data[0].name} - ${values.data.data[0].value} \n" +
+                                                    "\n ${values.data.data[3].name} - ${values.data.data[3].value} \n" +
+                                                    "\n ${values.data.data[4].name} - ${values.data.data[4].value} \n" +
+                                                    "\n ${values.data.data[5].name} - ${values.data.data[5].value} \n"
+                                        }
+                                        }
+                                    values.data.data.size == 3 -> {
+                                            "\n ${values.data.data[0].name} - ${values.data.data[0].value} \n" +
+                                                    "\n ${values.data.data[1].name} - ${values.data.data[1].value} \n" +
+                                                    "\n ${values.data.data[2].name} - ${values.data.data[2].value} \n"
+                                        }
+                                    values.data.data.size == 1 -> {
+                                            "\n ${values.data.data[0].name} - ${values.data.data[0].value} \n"
+                                        }
+                                    else -> {"\n ERROR"}
+                                }
+                                //"\n data: ${it?.data?.data?.forEach {test -> test.name }}"
                 }
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.type = type
@@ -86,6 +114,7 @@ class DetailsHeroesFragment : Fragment() {
 
         Glide.with(this)
             .load(args.heroesDetails.data.ImgAssets.banner)
+            .error(R.drawable.error)
             .into(mBinding!!.ivHeroesDetails)
 
         mBinding!!.tvHeroesName.text = args.heroesDetails.name

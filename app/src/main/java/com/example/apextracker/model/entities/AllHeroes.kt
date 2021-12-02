@@ -14,7 +14,7 @@ data class Heroes(
 data class Global(
     val arena: Arena,
     val avatar: String,
-    val badges: List<Badge>,
+//    val badges: List<Badge>,
     val bans: Bans,
     val internalUpdateCount: Int,
     val level: Int,
