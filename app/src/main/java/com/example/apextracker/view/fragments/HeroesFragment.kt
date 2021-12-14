@@ -142,7 +142,7 @@ class HeroesFragment : Fragment() {
         mAllInfoApex.allInfoApexLoadingError.observe(viewLifecycleOwner,
             { dataError ->
                 dataError?.let {
-                    if(dataError) {
+                 /*   if(dataError) {
                         Toast.makeText(
                             requireActivity(),
                             "User not found",
@@ -150,8 +150,9 @@ class HeroesFragment : Fragment() {
                         ).show()
                         startActivity(Intent(requireActivity(), AuthorizationActivity::class.java))
 
-                        Log.i("Error Apex API", "$dataError")
-                    }
+
+                    }*/
+                    Log.i("Error Apex API", "$dataError")
                 }
             })
         mAllInfoApex.loadAllInfoApex.observe(viewLifecycleOwner,
