@@ -13,4 +13,8 @@ object Constants {
     const val API_PLATFORM_VALUE: String = "PC"
     var API_PLAYER_VALUE: String = ""
     var CHECK_BOX_STATE: Boolean = false
+
+    const val NOTIFICATION_ID = "ApexLegends_notification_id"
+    const val NOTIFICATION_NAME = "ApexLegends"
+    const val NOTIFICATION_CHANNEL = "ApexLegends_channel_01"
 }

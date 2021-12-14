@@ -14,4 +14,7 @@
     <string name="action_exit_profile">Exit</string>
     <string name="action_share">Share</string>
     
+    <string name="notification_user_title">Checkout new Account information</string>
+    <string name="notification_user_subtitle">Tap for more details</string>
+    
 </resources>
