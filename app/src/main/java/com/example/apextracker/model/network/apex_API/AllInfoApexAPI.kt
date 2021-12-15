@@ -1,6 +1,6 @@
-package com.example.apextracker.model.network
+package com.example.apextracker.model.network.apex_API
 
-import com.example.apextracker.model.entities.AllHeroes
+import com.example.apextracker.model.entities.apex.AllHeroes
 import com.example.apextracker.utils.Constants
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET

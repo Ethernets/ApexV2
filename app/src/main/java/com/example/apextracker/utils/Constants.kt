@@ -1,6 +1,7 @@
 package com.example.apextracker.utils
 
 object Constants {
+    // CONSTANTS FOR APEX LEGENDS API
     const val APEX_AVATAR_SOURCE_LOCAL = "Local"
     const val APEX_AVATAR_SOURCE_ONLINE = "Online"
 
@@ -17,4 +18,14 @@ object Constants {
     const val NOTIFICATION_ID = "ApexLegends_notification_id"
     const val NOTIFICATION_NAME = "ApexLegends"
     const val NOTIFICATION_CHANNEL = "ApexLegends_channel_01"
+    // END
+
+    //CONSTANTS FOR YOUTUBE API
+    const val BASE_YOUTUBE_URL: String = "https://www.googleapis.com/"
+    const val API_YOUTUBE_ENDPOINT: String = "youtube/v3/playlistItems?part=snippet"
+    const val API_YOUTUBE_PLAYLIST_ID: String = "playlistId"
+    const val API_YOUTUBE_PLAYLIST_ID_VALUE: String = "UURf_VKcYH_8sha9rb1--erA"
+    const val API_YOUTUBE_KEY: String = "key"
+    const val API_YOUTUBE_KEY_VALUE: String = "AIzaSyAXlWrr7JDZRv--WV3uo98MsQIygExkFiQ"
+    //END
 }

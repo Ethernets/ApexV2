@@ -2,8 +2,8 @@ package com.example.apextracker.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.apextracker.model.entities.AllHeroes
-import com.example.apextracker.model.network.AllInfoApexAPIService
+import com.example.apextracker.model.entities.apex.AllHeroes
+import com.example.apextracker.model.network.apex_API.AllInfoApexAPIService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.observers.DisposableSingleObserver

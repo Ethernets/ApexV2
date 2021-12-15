@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_details_heroes">
             <argument
                 android:name="heroesDetails"
-                app:argType="com.example.apextracker.model.entities.Heroes"
+                app:argType="com.example.apextracker.model.entities.apex.Heroes"
                 />
 
 

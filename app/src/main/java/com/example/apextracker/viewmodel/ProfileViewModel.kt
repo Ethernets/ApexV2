@@ -2,7 +2,7 @@ package com.example.apextracker.viewmodel
 
 import androidx.lifecycle.*
 import com.example.apextracker.model.database.ProfileRepository
-import com.example.apextracker.model.entities.Profile
+import com.example.apextracker.model.entities.apex.Profile
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -14,11 +13,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.apextracker.R
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.FragmentHeroesBinding
-import com.example.apextracker.model.entities.AllHeroes
-import com.example.apextracker.model.entities.Heroes
-import com.example.apextracker.model.entities.Profile
+import com.example.apextracker.model.entities.apex.AllHeroes
+import com.example.apextracker.model.entities.apex.Heroes
+import com.example.apextracker.model.entities.apex.Profile
 import com.example.apextracker.utils.Constants
-import com.example.apextracker.view.activities.AuthorizationActivity
 import com.example.apextracker.view.activities.ProfileActivity
 import com.example.apextracker.view.adapters.HeroesAdapter
 import com.example.apextracker.viewmodel.HeroesViewModel

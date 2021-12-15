@@ -47,7 +47,7 @@ class NotifyWorker(context: Context, workerParams: WorkerParameters): Worker(con
         val bigPicStyle = NotificationCompat.BigPictureStyle()
             .bigPicture(bitmap)
             .bigLargeIcon(null)
-        val pendingInten = PendingIntent.getActivity(applicationContext, 0, intent, 0)
+        val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, 0)
 
         val notification = NotificationCompat.Builder(applicationContext, Constants.NOTIFICATION_CHANNEL)
             .setContentTitle(titleNotification)
@@ -55,7 +55,7 @@ class NotifyWorker(context: Context, workerParams: WorkerParameters): Worker(con
             .setSmallIcon(R.drawable.ic_videogame_logo_small)
             .setLargeIcon(bitmap)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
-            .setContentIntent(pendingInten)
+            .setContentIntent(pendingIntent)
             .setStyle(bigPicStyle)
             .setAutoCancel(true)
 

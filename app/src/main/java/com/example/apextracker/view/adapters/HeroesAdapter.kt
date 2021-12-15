@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apextracker.R
 import com.example.apextracker.databinding.ItemHeroesLayoutBinding
-import com.example.apextracker.model.entities.Heroes
+import com.example.apextracker.model.entities.apex.Heroes
 import com.example.apextracker.view.fragments.HeroesFragment
 
 class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<HeroesAdapter.ViewHolder>() {

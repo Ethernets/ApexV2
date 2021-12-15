@@ -10,11 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.apextracker.R
 import com.example.apextracker.databinding.FragmentFunnyVideosBinding
 import com.example.apextracker.view.activities.ProfileActivity
-import com.example.apextracker.viewmodel.FunyVideosViewModel
+import com.example.apextracker.viewmodel.FunnyVideosViewModel
 
 class FunnyVideosFragment : Fragment() {
 
-    private lateinit var funyVideosViewModel: FunyVideosViewModel
+    private lateinit var funnyVideosViewModel: FunnyVideosViewModel
     private var _binding: FragmentFunnyVideosBinding? = null
 
     // This property is only valid between onCreateView and
@@ -31,14 +31,14 @@ class FunnyVideosFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        funyVideosViewModel =
-            ViewModelProvider(this).get(FunyVideosViewModel::class.java)
+        funnyVideosViewModel =
+            ViewModelProvider(this).get(FunnyVideosViewModel::class.java)
 
         _binding = FragmentFunnyVideosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        funyVideosViewModel.text.observe(viewLifecycleOwner, Observer {
+        funnyVideosViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

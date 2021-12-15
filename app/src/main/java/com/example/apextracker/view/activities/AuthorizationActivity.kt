@@ -3,17 +3,9 @@ package com.example.apextracker.view.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
-import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.viewModels
-import com.example.apextracker.R
 import com.example.apextracker.application.ApexTrackerApplication
 import com.example.apextracker.databinding.ActivityAuthorizationBinding
-import com.example.apextracker.model.entities.Profile
 import com.example.apextracker.view.fragments.HeroesFragment
 import com.example.apextracker.viewmodel.ProfileViewModel
 import com.example.apextracker.viewmodel.ProfileViewModelFactory
