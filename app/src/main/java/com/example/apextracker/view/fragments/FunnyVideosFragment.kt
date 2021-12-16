@@ -1,12 +1,13 @@
 package com.example.apextracker.view.fragments
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.example.apextracker.R
 import com.example.apextracker.databinding.FragmentFunnyVideosBinding
 import com.example.apextracker.view.activities.ProfileActivity
@@ -15,11 +16,8 @@ import com.example.apextracker.viewmodel.FunnyVideosViewModel
 class FunnyVideosFragment : Fragment() {
 
     private lateinit var funnyVideosViewModel: FunnyVideosViewModel
-    private var _binding: FragmentFunnyVideosBinding? = null
+    private var mBinding: FragmentFunnyVideosBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,18 +28,30 @@ class FunnyVideosFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         funnyVideosViewModel =
             ViewModelProvider(this).get(FunnyVideosViewModel::class.java)
 
-        _binding = FragmentFunnyVideosBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        mBinding = FragmentFunnyVideosBinding.inflate(inflater, container, false)
+        return mBinding!!.root
+    }
 
-        val textView: TextView = binding.textNotifications
-        funnyVideosViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        funnyVideosViewModel =
+            ViewModelProvider(this).get(FunnyVideosViewModel::class.java)
+        funnyVideosViewModel.getInfoYoutubeVideoFromAPI()
+
+        infoYoutubeVideoObserver()
+    }
+
+    private fun infoYoutubeVideoObserver(){
+        funnyVideosViewModel.loadInfoYoutubeVideoResponse.observe(viewLifecycleOwner){
+            val urlTest = "https://www.youtube.com/watch?v=ixvqwF4kpWQ"
+            val uriTest: Uri = Uri.parse(urlTest)
+            mBinding?.videoView?.setVideoURI(uriTest)
+            mBinding?.videoView?.start()
+            Log.i("Youtube", it.items.toString())
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -61,6 +71,6 @@ class FunnyVideosFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        mBinding = null
     }
 }
