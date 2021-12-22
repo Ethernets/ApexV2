@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_all_heroes,
                 R.id.navigation_match_history,
                 R.id.navigation_funny_videos
+
             )
         )
         setupActionBarWithNavController(mNavController, appBarConfiguration)
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         .build()
 
     private fun createWorkRequest() =
-        PeriodicWorkRequestBuilder<NotifyWorker>(15, TimeUnit.MINUTES)
+        PeriodicWorkRequestBuilder<NotifyWorker>(60, TimeUnit.MINUTES)
             .setConstraints(createConstraints())
             .build()
 
