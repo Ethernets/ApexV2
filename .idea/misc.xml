@@ -14,9 +14,11 @@
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/dilog_custom_progress.xml" value="0.17447916666666666" />
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/fragment_details_heroes.xml" value="0.4" />
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/fragment_funny_videos.xml" value="0.33489583333333334" />
+        <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/fragment_funny_videos_details.xml" value="0.18333333333333332" />
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/fragment_heroes.xml" value="0.1828125" />
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/fragment_match_history.xml" value="0.33489583333333334" />
-        <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/item_heroes_layout.xml" value="0.1828125" />
+        <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/item_heroes_layout.xml" value="0.4" />
+        <entry key="..\:/Android_apps/ApexV2/app/src/main/res/layout/item_videos_layout.xml" value="0.4" />
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1828125" />
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/menu/menu_exit.xml" value="0.17447916666666666" />
         <entry key="..\:/Android_apps/ApexV2/app/src/main/res/menu/menu_profile.xml" value="0.17447916666666666" />

@@ -28,19 +28,12 @@ class HeroesAdapter(private val fragment: Fragment): RecyclerView.Adapter<Heroes
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val hero = heroes[position]
-        /*
-        if(hero.data.ImgAssets.icon.isEmpty()){
-            Glide.with(fragment)
-                .load(R.drawable.images_err)
-                .error(R.drawable.images_err)
-                .into(holder.ivHeroesImage)
-        }else {*/
             Glide.with(fragment)
                 .load(hero.data.ImgAssets.icon)
                 .error(R.drawable.images_err)
                 .into(holder.ivHeroesImage)
             holder.tvTitle.text = hero.name
-       // }
+
         holder.itemView.setOnClickListener{
             if (fragment is HeroesFragment) {
                 fragment.heroesDetails(hero)

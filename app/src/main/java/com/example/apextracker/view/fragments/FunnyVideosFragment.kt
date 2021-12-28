@@ -1,15 +1,16 @@
 package com.example.apextracker.view.fragments
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.apextracker.R
 import com.example.apextracker.databinding.FragmentFunnyVideosBinding
+import com.example.apextracker.model.entities.youtube.AllVideo
 import com.example.apextracker.view.activities.ProfileActivity
+import com.example.apextracker.view.adapters.VideosAdapter
 import com.example.apextracker.viewmodel.FunnyVideosViewModel
 
 
@@ -18,6 +19,10 @@ class FunnyVideosFragment : Fragment() {
     private lateinit var funnyVideosViewModel: FunnyVideosViewModel
 
     private var mBinding: FragmentFunnyVideosBinding? = null
+
+    private lateinit var mVideosAdapter: VideosAdapter
+
+    val test = ArrayList<AllVideo.AllVideoX>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,29 +46,28 @@ class FunnyVideosFragment : Fragment() {
             ViewModelProvider(this).get(FunnyVideosViewModel::class.java)
         funnyVideosViewModel.getInfoYoutubeVideoFromAPI()
 
+        mBinding?.rvVideoList?.layoutManager = GridLayoutManager(requireActivity(), 1)
+
+        mVideosAdapter = VideosAdapter(this@FunnyVideosFragment)
+
+        mBinding?.rvVideoList?.adapter = mVideosAdapter
+
         infoYoutubeVideoObserver()
     }
 
-    private fun infoYoutubeVideoObserver(){
-        funnyVideosViewModel.loadInfoYoutubeVideoResponse.observe(viewLifecycleOwner){
+    private fun infoYoutubeVideoObserver() {
+        funnyVideosViewModel.loadInfoYoutubeVideoResponse.observe(viewLifecycleOwner) {
             val urlTest = "https://www.youtube.com/watch?v=MFfXkKp6jok"
 
-            initializePlayer(urlTest)
-           // mBinding?.videoView?.setVideoURI(uriTest)
-          //  mBinding?.videoView?.start()
-            Log.i("Youtube", it.items.toString())
+            mVideosAdapter.videosList(it.items)
+            // mBinding?.videoView?.setVideoURI(uriTest)
+            //  mBinding?.videoView?.start()
+           // Log.i("Youtube", it.items.toString())
         }
     }
 
-    private fun initializePlayer(url: String) {
-
-    }
-
-
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-     //   inflater.inflate(R.menu.menu_profile, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
