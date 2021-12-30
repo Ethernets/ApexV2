@@ -2,7 +2,9 @@ package com.example.apextracker.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.apextracker.model.entities.apex.AllHeroes
 import com.example.apextracker.model.entities.youtube.AllVideo
+import com.example.apextracker.model.entities.youtube.Item
 import com.example.apextracker.model.network.youtube_API.InfoYoutubeVideoAPIService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -15,7 +17,7 @@ class FunnyVideosViewModel : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     val loadInfoYoutubeVideo = MutableLiveData<Boolean>()
-    val loadInfoYoutubeVideoResponse = MutableLiveData<AllVideo.AllVideoX>()
+    val loadInfoYoutubeVideoResponse = MutableLiveData<AllVideo>()
     val loadInfoYoutubeVideoLoadingError = MutableLiveData<Boolean>()
 
     fun getInfoYoutubeVideoFromAPI() {
@@ -25,8 +27,8 @@ class FunnyVideosViewModel : ViewModel() {
             infoYoutubeVideoAPIService.getInfoYoutubeVideo()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<AllVideo.AllVideoX>() {
-                    override fun onSuccess(value: AllVideo.AllVideoX) {
+                .subscribeWith(object : DisposableSingleObserver<AllVideo>() {
+                    override fun onSuccess(value: AllVideo) {
                         loadInfoYoutubeVideo.value = false
                         loadInfoYoutubeVideoResponse.value = value
                         loadInfoYoutubeVideoLoadingError.value = false

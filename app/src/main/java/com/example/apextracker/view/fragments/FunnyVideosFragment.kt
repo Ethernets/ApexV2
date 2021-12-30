@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.apextracker.R
 import com.example.apextracker.databinding.FragmentFunnyVideosBinding
 import com.example.apextracker.model.entities.youtube.AllVideo
+import com.example.apextracker.model.entities.youtube.Item
 import com.example.apextracker.view.activities.ProfileActivity
 import com.example.apextracker.view.adapters.VideosAdapter
 import com.example.apextracker.viewmodel.FunnyVideosViewModel
@@ -22,7 +24,7 @@ class FunnyVideosFragment : Fragment() {
 
     private lateinit var mVideosAdapter: VideosAdapter
 
-    val test = ArrayList<AllVideo.AllVideoX>()
+    val test = ArrayList<Item>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,15 +59,14 @@ class FunnyVideosFragment : Fragment() {
 
     private fun infoYoutubeVideoObserver() {
         funnyVideosViewModel.loadInfoYoutubeVideoResponse.observe(viewLifecycleOwner) {
-            val urlTest = "https://www.youtube.com/watch?v=MFfXkKp6jok"
-
             mVideosAdapter.videosList(it.items)
-            // mBinding?.videoView?.setVideoURI(uriTest)
-            //  mBinding?.videoView?.start()
-           // Log.i("Youtube", it.items.toString())
         }
     }
 
+
+    fun videoDetails(videos: Item){
+        findNavController().navigate(FunnyVideosFragmentDirections.actionNavigationFunnyVideosToNavigationFunnyVideosDetails(videos))
+    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

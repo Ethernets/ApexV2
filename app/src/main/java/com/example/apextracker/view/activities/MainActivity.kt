@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_all_heroes,
-                R.id.navigation_match_history,
                 R.id.navigation_funny_videos
 
             )
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             mBinding.navView.selectedItemId = R.id.navigation_all_heroes
         }
 
-        startWork()
+       // startWork()
 
     }
 
@@ -62,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         .build()
 
     private fun createWorkRequest() =
-        PeriodicWorkRequestBuilder<NotifyWorker>(60, TimeUnit.MINUTES)
+        PeriodicWorkRequestBuilder<NotifyWorker>(3, TimeUnit.DAYS)
             .setConstraints(createConstraints())
             .build()
 

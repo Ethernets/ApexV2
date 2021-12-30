@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apextracker.R
 import com.example.apextracker.databinding.ItemVideosLayoutBinding
-import com.example.apextracker.model.entities.youtube.AllVideo
+import com.example.apextracker.model.entities.youtube.Item
+import com.example.apextracker.view.fragments.FunnyVideosFragment
 
 class VideosAdapter(private val fragment: Fragment): RecyclerView.Adapter<VideosAdapter.ViewHolder>() {
-    private var videos: List<AllVideo.Item> = listOf()
+    private var videos: List<Item> = listOf()
 
     class ViewHolder(view: ItemVideosLayoutBinding): RecyclerView.ViewHolder(view.root) {
         val ivVideosImage = view.ivVideosImage
@@ -31,17 +32,21 @@ class VideosAdapter(private val fragment: Fragment): RecyclerView.Adapter<Videos
             .load(video.snippet.thumbnails.high.url)
             .error(R.drawable.images_err)
             .into(holder.ivVideosImage)
-       // video.snippet.thumbnails.high.url
+
         holder.tvVideosTitle.text = video.snippet.title
+        holder.itemView.setOnClickListener{
+            if (fragment is FunnyVideosFragment){
+                fragment.videoDetails(video)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return videos.size
     }
 
-    fun videosList(list: List<AllVideo.Item>){
+    fun videosList(list: List<Item>){
         videos = list
-        Log.i("Apex LIST",  videos.toString())
         notifyDataSetChanged()
     }
 }

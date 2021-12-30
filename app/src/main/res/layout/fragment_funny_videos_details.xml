@@ -9,11 +9,10 @@
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtubePlayerView"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        app:autoPlay="true"
+        android:layout_height="500dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:videoId="S0Q4gqBUs7c" />
+         />
 
 </FrameLayout>

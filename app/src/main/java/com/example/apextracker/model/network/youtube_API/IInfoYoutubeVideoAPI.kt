@@ -11,5 +11,5 @@ interface IInfoYoutubeVideoAPI {
     fun getVideos(
         @Query(Constants.API_YOUTUBE_PLAYLIST_ID) playlistId: String,
         @Query(Constants.API_YOUTUBE_KEY) apiKey: String
-    ): Single<AllVideo.AllVideoX>
+    ): Single<AllVideo>
 }
