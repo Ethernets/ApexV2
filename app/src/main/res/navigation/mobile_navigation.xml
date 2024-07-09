@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_all_heroes">
+
+    <fragment
+        android:id="@+id/navigation_all_heroes"
+        android:name="com.example.apextracker.view.fragments.HeroesFragment"
+        android:label="@string/title_heroes"
+        tools:layout="@layout/fragment_heroes" >
+        <action
+            android:id="@+id/action_all_heroes_to_heroes_details"
+            app:destination="@id/navigation_heroes_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_match_history"
+        android:name="com.example.apextracker.view.fragments.MatchHistoryFragment"
+        android:label="@string/title_match_history"
+        tools:layout="@layout/fragment_match_history" />
+
+    <fragment
+        android:id="@+id/navigation_funny_videos"
+        android:name="com.example.apextracker.view.fragments.FunnyVideosFragment"
+        android:label="@string/title_funny_videos"
+        tools:layout="@layout/fragment_funny_videos" >
+        <action
+            android:id="@+id/action_navigation_funny_videos_to_navigation_funny_videos_details"
+            app:destination="@id/navigation_funny_videos_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_funny_videos_details"
+        android:name="com.example.apextracker.view.fragments.FunnyVideosDetailsFragment"
+        android:label="Videos Details"
+        tools:layout="@layout/fragment_funny_videos_details" >
+        <argument
+            android:name="videosDetailsArg"
+            app:argType="com.example.apextracker.model.entities.youtube.Item"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_heroes_details"
+        android:name="com.example.apextracker.view.fragments.DetailsHeroesFragment"
+        android:label="@string/title_heroes_details"
+        tools:layout="@layout/fragment_details_heroes">
+            <argument
+                android:name="heroesDetails"
+                app:argType="com.example.apextracker.model.entities.apex.Heroes"
+                />
+
+
+    </fragment>
+
+</navigation>
