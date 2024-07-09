@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.apextracker.model.entities.Profile
+import com.example.apextracker.model.entities.apex.Profile
 
 @Database(entities = [Profile::class], version = 3)
 abstract class ProfileRoomDatabase: RoomDatabase() {

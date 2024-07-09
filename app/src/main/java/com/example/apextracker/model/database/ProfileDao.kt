@@ -1,10 +1,9 @@
 package com.example.apextracker.model.database
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.apextracker.model.entities.Profile
+import com.example.apextracker.model.entities.apex.Profile
 import kotlinx.coroutines.flow.Flow
 
 @Dao

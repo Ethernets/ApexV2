@@ -11,7 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.apextracker.R
 import com.example.apextracker.databinding.FragmentDetailsHeroesBinding
-import com.example.apextracker.model.entities.Heroes
+import com.example.apextracker.model.entities.apex.Heroes
 
 
 class DetailsHeroesFragment : Fragment() {

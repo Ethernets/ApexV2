@@ -25,7 +25,22 @@
         android:id="@+id/navigation_funny_videos"
         android:name="com.example.apextracker.view.fragments.FunnyVideosFragment"
         android:label="@string/title_funny_videos"
-        tools:layout="@layout/fragment_funny_videos" />
+        tools:layout="@layout/fragment_funny_videos" >
+        <action
+            android:id="@+id/action_navigation_funny_videos_to_navigation_funny_videos_details"
+            app:destination="@id/navigation_funny_videos_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_funny_videos_details"
+        android:name="com.example.apextracker.view.fragments.FunnyVideosDetailsFragment"
+        android:label="Videos Details"
+        tools:layout="@layout/fragment_funny_videos_details" >
+        <argument
+            android:name="videosDetailsArg"
+            app:argType="com.example.apextracker.model.entities.youtube.Item"/>
+    </fragment>
+
     <fragment
         android:id="@+id/navigation_heroes_details"
         android:name="com.example.apextracker.view.fragments.DetailsHeroesFragment"
@@ -33,7 +48,7 @@
         tools:layout="@layout/fragment_details_heroes">
             <argument
                 android:name="heroesDetails"
-                app:argType="com.example.apextracker.model.entities.Heroes"
+                app:argType="com.example.apextracker.model.entities.apex.Heroes"
                 />
 
 

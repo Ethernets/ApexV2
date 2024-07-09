@@ -3,23 +3,28 @@ package com.example.apextracker.view.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.apextracker.R
 import com.example.apextracker.databinding.FragmentFunnyVideosBinding
+import com.example.apextracker.model.entities.youtube.AllVideo
+import com.example.apextracker.model.entities.youtube.Item
 import com.example.apextracker.view.activities.ProfileActivity
-import com.example.apextracker.viewmodel.FunyVideosViewModel
+import com.example.apextracker.view.adapters.VideosAdapter
+import com.example.apextracker.viewmodel.FunnyVideosViewModel
+
 
 class FunnyVideosFragment : Fragment() {
 
-    private lateinit var funyVideosViewModel: FunyVideosViewModel
-    private var _binding: FragmentFunnyVideosBinding? = null
+    private lateinit var funnyVideosViewModel: FunnyVideosViewModel
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private var mBinding: FragmentFunnyVideosBinding? = null
+
+    private lateinit var mVideosAdapter: VideosAdapter
+
+    val test = ArrayList<Item>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,22 +35,40 @@ class FunnyVideosFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        funyVideosViewModel =
-            ViewModelProvider(this).get(FunyVideosViewModel::class.java)
+    ): View {
+        funnyVideosViewModel =
+            ViewModelProvider(this).get(FunnyVideosViewModel::class.java)
 
-        _binding = FragmentFunnyVideosBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        mBinding = FragmentFunnyVideosBinding.inflate(inflater, container, false)
+        return mBinding!!.root
+    }
 
-        val textView: TextView = binding.textNotifications
-        funyVideosViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        funnyVideosViewModel =
+            ViewModelProvider(this).get(FunnyVideosViewModel::class.java)
+        funnyVideosViewModel.getInfoYoutubeVideoFromAPI()
+
+        mBinding?.rvVideoList?.layoutManager = GridLayoutManager(requireActivity(), 1)
+
+        mVideosAdapter = VideosAdapter(this@FunnyVideosFragment)
+
+        mBinding?.rvVideoList?.adapter = mVideosAdapter
+
+        infoYoutubeVideoObserver()
+    }
+
+    private fun infoYoutubeVideoObserver() {
+        funnyVideosViewModel.loadInfoYoutubeVideoResponse.observe(viewLifecycleOwner) {
+            mVideosAdapter.videosList(it.items)
+        }
+    }
+
+
+    fun videoDetails(videos: Item){
+        findNavController().navigate(FunnyVideosFragmentDirections.actionNavigationFunnyVideosToNavigationFunnyVideosDetails(videos))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-     //   inflater.inflate(R.menu.menu_profile, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -61,6 +84,6 @@ class FunnyVideosFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        mBinding = null
     }
 }

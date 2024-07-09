@@ -8,10 +8,14 @@
     <string name="splash_screen_title">APEX LEGENDS tracker</string>
     <string name="user_profile">Profile</string>
     <string name="label_no_heroes_added_yet">No Heroes added yet</string>
+    <string name="label_no_videos_added_yet">No Videos added yet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="loading_pls_wait">Loading please wait</string>
     <string name="action_exit_profile">Exit</string>
     <string name="action_share">Share</string>
-    
+
+    <string name="notification_user_title">Checkout new Account information</string>
+    <string name="notification_user_subtitle">Tap for more details</string>
+
 </resources>

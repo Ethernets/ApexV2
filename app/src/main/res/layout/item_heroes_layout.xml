@@ -21,7 +21,7 @@
         android:layout_margin="@dimen/_1sdp"
         android:contentDescription="@string/app_name"
         android:scaleType="fitXY"
-        tools:src="@mipmap/ic_launcher" />
+        tools:src="@drawable/error" />
 
     <TextView
         android:id="@+id/tv_heroes_title"
